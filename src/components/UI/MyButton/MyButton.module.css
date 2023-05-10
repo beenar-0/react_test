@@ -1,0 +1,9 @@
+.myBtn {
+    border-radius: 3px;
+    padding: 5px;
+    width: fit-content;
+    height: fit-content;
+    border: 2px cornflowerblue solid;
+    color: cornflowerblue;
+    cursor: pointer;
+}
