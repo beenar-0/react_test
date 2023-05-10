@@ -2,11 +2,14 @@ import React, {useMemo, useState} from "react";
 import PostList from "./components/PostList";
 import PostForm from "./components/PostForm";
 import MyFilter from "./components/UI/MyFilter/MyFilter";
+import MyModal from "./components/UI/MyModal/MyModal";
+import MyButton from "./components/UI/MyButton/MyButton";
 
 
 function App() {
 
-    const [filter, setFilter] = useState({sort:'', query:''})
+    const [filter, setFilter] = useState({sort: '', query: ''})
+    const [modalActive, setModalActive] = useState(false)
 
     const [posts, setPosts] = useState([
         {number: 1, title: "qboba", body: "cscrip", id: Math.trunc(Math.random() * 1000000000)},
@@ -22,8 +25,8 @@ function App() {
         } else return posts
     }, [filter.sort, posts])
 
-    const sortedAndSearchedPosts = useMemo(()=>{
-        return sortedPosts.filter((post)=>{
+    const sortedAndSearchedPosts = useMemo(() => {
+        return sortedPosts.filter((post) => {
             return post.title.toLowerCase().includes(filter.query.toLowerCase())
         })
     }, [filter.query, sortedPosts])
@@ -31,6 +34,7 @@ function App() {
 
     function createPost(newPost) {
         setPosts([...posts, newPost])
+        setModalActive(false)
     }
 
     function removePost(post) {
@@ -39,10 +43,21 @@ function App() {
         }))
     }
 
-
     return (
         <div className="App">
-            <PostForm create={createPost}/>
+            <MyButton
+                onClick={() => {
+                    return setModalActive(true)
+                }}
+            >
+                Добавить пост
+            </MyButton>
+            <MyModal
+                modalActive={modalActive}
+                setModalActive={setModalActive}
+            >
+                <PostForm create={createPost}/>
+            </MyModal>
             <hr/>
             <MyFilter filter={filter} setFilter={setFilter}/>
             {sortedAndSearchedPosts.length

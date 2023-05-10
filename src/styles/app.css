@@ -5,9 +5,11 @@
 }
 
 #root {
+    height: 100vh;
+    position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 }
 
