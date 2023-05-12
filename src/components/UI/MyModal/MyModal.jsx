@@ -22,5 +22,4 @@ const MyModal = ({modalActive, setModalActive, children}) => {
         </div>
     );
 };
-
 export default MyModal;

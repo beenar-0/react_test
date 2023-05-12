@@ -1,11 +1,11 @@
 import React from 'react';
 
-const MySelect = ({options, defaultOption, value, changeSort}) => {
+const MySelect = ({options, defaultOption, value, onChange}) => {
     return (
         <select
             value={value}
             onChange={(event)=>{
-                return changeSort(event.target.value)
+                return onChange(event.target.value)
             }}
         >
             <option disabled value=''>{defaultOption}</option>

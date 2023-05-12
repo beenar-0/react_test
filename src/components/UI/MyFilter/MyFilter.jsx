@@ -3,8 +3,6 @@ import MyInput from "../MyInput/MyInput";
 import MySelect from "../MySelect/MySelect";
 
 const MyFilter = ({filter, setFilter}) => {
-
-
     return (
         <div style={{width:'100%'}}>
             <MyInput
@@ -12,14 +10,13 @@ const MyFilter = ({filter, setFilter}) => {
                 placeholder="Поиск..."
                 value={filter.query}
                 onChange={(e) => {
-                    console.log(setFilter)
                     return setFilter({...filter, query: e.target.value})
                 }}
             />
             <hr/>
             <MySelect
                 value={filter.sort}
-                changeSort={(selectedSort)=>{
+                onChange={(selectedSort)=>{
                     return setFilter({...filter, sort:selectedSort})
                 }}
                 options={[
