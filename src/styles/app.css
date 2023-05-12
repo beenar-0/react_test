@@ -5,6 +5,7 @@
 }
 
 #root {
+    background: #E5E5E5;
     height: 100vh;
     position: relative;
     display: flex;
@@ -14,13 +15,12 @@
 }
 
 .App {
-    padding: 10px;
     border: 2px cornflowerblue solid;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    width: 800px;
+    max-width: 400px;
 }
 
 .post {
@@ -76,3 +76,4 @@ margin: 15px 0;
     height: 5px;
     background-color: cornflowerblue;
 }
+

@@ -6,26 +6,25 @@ import MyModal from "./components/UI/MyModal/MyModal";
 import MyButton from "./components/UI/MyButton/MyButton";
 import {usePost} from "./hooks/usePost";
 import PostService from "./API/PostService";
+import Spinner from "react-bootstrap/Spinner";
+import "bootstrap/dist/css/bootstrap.min.css"
+import useFetching from "./hooks/useFetching";
+import Header from "./components/UI/MyHeader/Header";
 
 
 function App() {
-
+    const [fetchPosts, isPostsLoading, error] = useFetching(async () => {
+        setPosts(await PostService.getAllPosts())
+    })
     const [posts, setPosts] = useState([])
     const [filter, setFilter] = useState({sort: '', query: ''})
     const [modalActive, setModalActive] = useState(false)
-    const [isPostsLoading, setIsPostLoading] = useState(false)
     const sortedAndSearchedPosts = usePost(posts, filter.sort, filter.query)
 
     useEffect(() => {
         fetchPosts()
-            .then()
     }, [])
 
-    async function fetchPosts() {
-        setIsPostLoading(true)
-        setPosts(await PostService.getAllPosts())
-        setIsPostLoading(false)
-    }
 
     function createPost(newPost) {
         setPosts([...posts, newPost])
@@ -40,6 +39,7 @@ function App() {
 
     return (
         <div className="App">
+            <Header/>
             <MyButton
                 onClick={() => {
                     return setModalActive(true)
@@ -55,9 +55,11 @@ function App() {
             </MyModal>
             <hr/>
             <MyFilter filter={filter} setFilter={setFilter}/>
-            {sortedAndSearchedPosts.length
-                    ? <PostList posts={sortedAndSearchedPosts} remove={removePost} title="Список постов №1"/>
-                    : <h1>Посты не найдены</h1>
+            {isPostsLoading
+                ? <Spinner animation="border" style={{width: 200, height: 200, margin: 50}}/>
+                : error
+                    ? <h1>Ошибка: {error}</h1>
+                    : <PostList posts={sortedAndSearchedPosts} remove={removePost} title="Список постов №1"/>
             }
         </div>
     );
