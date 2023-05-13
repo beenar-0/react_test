@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import PostList from "./components/PostList";
 import PostForm from "./components/PostForm";
 import MyFilter from "./components/UI/MyFilter/MyFilter";
@@ -11,15 +11,18 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import useFetching from "./hooks/useFetching";
 import MyHeader from "./components/UI/MyHeader/MyHeader";
 import MyCard from "./components/UI/MyCard/MyCard";
+import MySideMenu from "./components/UI/MySideMenu/MySideMenu";
 
 
 function App() {
+
     const [fetchPosts, isPostsLoading, error] = useFetching(async () => {
         setPosts(await PostService.getAllPosts())
     })
     const [posts, setPosts] = useState([])
     const [filter, setFilter] = useState({sort: '', query: ''})
     const [modalActive, setModalActive] = useState(false)
+    const [isMenuActive, setIsMenuActive] = useState(false)
     const sortedAndSearchedPosts = usePost(posts, filter.sort, filter.query)
 
     useEffect(() => {
@@ -39,8 +42,16 @@ function App() {
     }
 
     return (
-        <div className="App">
-            <MyHeader/>
+        <div className={isMenuActive
+            ? 'App _lock'
+            : 'App'}>
+            <div className={isMenuActive
+                ? 'lockScreen _active'
+                : 'lockScreen'
+            }>
+            </div>
+            <MySideMenu menuActive={isMenuActive}/>
+            <MyHeader menuActive={isMenuActive} setMenu={setIsMenuActive}/>
             {/*<MyButton onClick={() => setModalActive(true)}>Добавить пост</MyButton>*/}
             {/*<MyModal*/}
             {/*    modalActive={modalActive}*/}
@@ -50,9 +61,9 @@ function App() {
             {/*</MyModal>*/}
             <MyFilter filter={filter} setFilter={setFilter}/>
             {isPostsLoading
-                ? <Spinner animation="border" style={{width: 200, height: 200, margin: 50}}/>
+                ? <Spinner animation="border" variant="warning" style={{width: 100, height: 100, margin: 50}}/>
                 : error
-                    ? <h1>Ошибка: {error}</h1>
+                    ? <h1>Error: {error}</h1>
                     : <PostList posts={sortedAndSearchedPosts} remove={removePost}/>
             }
         </div>

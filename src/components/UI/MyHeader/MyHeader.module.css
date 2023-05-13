@@ -6,11 +6,13 @@
     border-radius: 0 0 0.4em 0.4em;
     background: #FFA451;
     width: 100%;
+    min-height: 50px;
     height: 50px;
 }
 
 
 .container {
+    z-index: 10;
     display:grid;
     place-items:center;
     height:30px;
@@ -23,7 +25,7 @@
     cursor: pointer;
     width: 30px;
     height: 30px;
-    background: url("../../../assets/icons/basket.svg") center center no-repeat;
+    background: url("../../../assets/icons/cart.svg") center center no-repeat;
     background-size: cover;
 }
 

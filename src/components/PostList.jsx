@@ -2,6 +2,9 @@ import React, {useState} from 'react';
 import MyCard from "./UI/MyCard/MyCard";
 
 const PostList = ({posts, remove}) => {
+    function getId() {
+        return Math.trunc(Math.random() * 1000000000)
+    }
 
     return (
         <div className="postList">
@@ -10,10 +13,10 @@ const PostList = ({posts, remove}) => {
                     return <MyCard
                         remove={remove}
                         post={post}
-                        id={Math.trunc(Math.random() * 1000000000)}
-                        key={Math.trunc(Math.random() * 1000000000)}/>
+                        id={getId()}
+                        key={getId()}/>
                 })
-                : <h1>Посты не найдены</h1>
+                : <h1>Cats not found!</h1>
             }
         </div>
     );

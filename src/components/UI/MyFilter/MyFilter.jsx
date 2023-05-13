@@ -8,7 +8,7 @@ const MyFilter = ({filter, setFilter}) => {
         <div className={classes.myFilter__container}>
             <MyInput
                 type="text"
-                placeholder="Поиск..."
+                placeholder="Search..."
                 value={filter.query}
                 onChange={(e) => {
                     return setFilter({...filter, query: e.target.value})
@@ -20,10 +20,10 @@ const MyFilter = ({filter, setFilter}) => {
                     return setFilter({...filter, sort:selectedSort})
                 }}
                 options={[
-                    {name: 'Заголовку', value: 'title'},
-                    {name: 'Содержанию поста', value: 'body'}
+                    {name: 'Name', value: 'title'},
+                    {name: 'Description', value: 'body'}
                 ]}
-                defaultOption={"Сортировка по:"}
+                defaultOption={"Sort by:"}
             />
         </div>
     );
