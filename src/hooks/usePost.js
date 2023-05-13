@@ -11,7 +11,7 @@ export function useSortedPosts(posts, sort) {
     return sortedPosts
 }
 
-export function usePost(posts, sort, query) {
+export default function usePost(posts, sort, query) {
     const sortedPosts = useSortedPosts(posts, sort)
     const sortedAndSearchedPosts = useMemo(() => {
         return sortedPosts.filter((post) => {

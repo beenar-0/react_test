@@ -1,16 +1,14 @@
 import React, {useState} from 'react';
-import PostItem from "./PostItem";
+import MyCard from "./UI/MyCard/MyCard";
 
-const PostList = ({posts, title, remove}) => {
+const PostList = ({posts, remove}) => {
 
     return (
         <div className="postList">
-            <h1 className={"postList__title"}>{title}</h1>
             {posts.length
-                ? posts.map((post, index) => {
-                    return <PostItem
+                ? posts.map((post) => {
+                    return <MyCard
                         remove={remove}
-                        number={index + 1}
                         post={post}
                         id={Math.trunc(Math.random() * 1000000000)}
                         key={Math.trunc(Math.random() * 1000000000)}/>

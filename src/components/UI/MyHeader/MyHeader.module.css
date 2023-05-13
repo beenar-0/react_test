@@ -1,5 +1,88 @@
 .header {
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 0 0 0.4em 0.4em;
     background: #FFA451;
     width: 100%;
     height: 50px;
+}
+
+
+.container {
+    display:grid;
+    place-items:center;
+    height:30px;
+    width: 30px;
+    margin:0 0 10px 0;
+    padding:0;
+}
+
+.basket {
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    background: url("../../../assets/icons/basket.svg") center center no-repeat;
+    background-size: cover;
+}
+
+label{
+    display:flex;
+    flex-direction:column;
+    width:100%;
+    height: 100%;
+    cursor:pointer;
+}
+
+label span{
+    background: #fff;
+    border-radius:10px;
+    height:3px;
+    margin: 5px 0;
+    transition: .4s  cubic-bezier(0.68, -0.6, 0.32, 1.6);
+
+}
+
+
+span:nth-of-type(1){
+    width:50%;
+
+}
+
+span:nth-of-type(2){
+    width:100%;
+}
+
+
+span:nth-of-type(3){
+    width:75%;
+
+}
+
+
+input[type="checkbox"]{
+    display:none;
+}
+
+
+input[type="checkbox"]:checked ~ span:nth-of-type(1){
+    transform-origin:bottom;
+    transform:rotatez(45deg) translate(7px,3px)
+}
+
+
+input[type="checkbox"]:checked ~ span:nth-of-type(2){
+
+    transform-origin:top;
+    transform:rotatez(-45deg)
+}
+
+
+input[type="checkbox"]:checked ~ span:nth-of-type(3){
+
+    transform-origin:bottom;
+    width:50%;
+    transform: translate(13px,-9px) rotatez(45deg);
+
 }

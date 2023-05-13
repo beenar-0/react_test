@@ -1,10 +1,11 @@
 import React, {useMemo} from 'react';
 import MyInput from "../MyInput/MyInput";
 import MySelect from "../MySelect/MySelect";
+import classes from "./MyFilter.module.css";
 
 const MyFilter = ({filter, setFilter}) => {
     return (
-        <div style={{width:'100%'}}>
+        <div className={classes.myFilter__container}>
             <MyInput
                 type="text"
                 placeholder="Поиск..."
@@ -13,7 +14,6 @@ const MyFilter = ({filter, setFilter}) => {
                     return setFilter({...filter, query: e.target.value})
                 }}
             />
-            <hr/>
             <MySelect
                 value={filter.sort}
                 onChange={(selectedSort)=>{

@@ -1,0 +1,7 @@
+.myFilter__container {
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}

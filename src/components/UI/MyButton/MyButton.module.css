@@ -3,7 +3,8 @@
     padding: 5px;
     width: fit-content;
     height: fit-content;
-    border: 2px cornflowerblue solid;
-    color: cornflowerblue;
+    border: 2px #FFA451 solid;
+    color: #FFA451;
+    background: white;
     cursor: pointer;
 }
