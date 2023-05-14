@@ -5,10 +5,10 @@ const PostItem = (props) => {
     return (
             <div className="post">
                 <div className="post__content">
-                    <h2 className="post__title">{props.number}. {props.post.title}</h2>
+                    <h2 className="post__title">{props.post.title}</h2>
                     <div className="post__container">
                         <div className="post__description">
-                            {props.post.body}
+                            {props.post.description}
                         </div>
                         <div className="post__btns">
                             <MyButton

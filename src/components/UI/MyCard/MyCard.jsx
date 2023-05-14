@@ -6,15 +6,16 @@ const MyCard = ({post, remove}) => {
 
     function limitStr(str, n, symb = '...') {
         if (!n && !symb) return str;
-        return str.slice(0, n) + symb;
+        return str.slice(0, n);
     }
 
     return (
         <div className={classes.container}>
-            <div className={classes.photo}></div>
+            <div className={classes.photo} style={{backgroundImage:`url("${post.img}")`}}></div>
             <div className={classes.content__container}>
-                <div className={classes.title}>{limitStr(post.title, 15)}</div>
-                <p className={classes.description}>{post.body}</p>
+                <div className={classes.title}>{limitStr(post.name, 15)}</div>
+                <p className={classes.description}>{post.description}</p>
+                <p className={classes.price}>{post.price}$</p>
                 <div className={classes.button__container}>
                     <button className={classes.button} onClick={()=>{
                         remove(post)

@@ -20,8 +20,8 @@ const MyFilter = ({filter, setFilter}) => {
                     return setFilter({...filter, sort:selectedSort})
                 }}
                 options={[
-                    {name: 'Name', value: 'title'},
-                    {name: 'Description', value: 'body'}
+                    {name: 'Name', value: 'name'},
+                    {name: 'Price', value: 'price'}
                 ]}
                 defaultOption={"Sort by:"}
             />

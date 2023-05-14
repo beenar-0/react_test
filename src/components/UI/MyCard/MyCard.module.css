@@ -1,13 +1,17 @@
+p {
+    margin-bottom: 0 !important;
+}
+
 .container {
     transition: 1s;
     padding: 0 0 10px 0;
     margin: 10px;
     width: 160px;
-    height: 200px;
+    height: 250px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: #FFFAEB;
+    background: #F8EADB;
     border-radius: 0.6em;
 }
 
@@ -20,20 +24,25 @@
 }
 
 .photo {
+    margin-bottom: 10px;
+    border-radius: 0.6em 0.6em 0 0;
+    min-height: 96px;
     width: 160px;
-    height: 130px;
-     background: url("../../../../public/cat.svg") center center no-repeat;
-    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 
 .title {
+    text-align: center;
     width: 100%;
-    font-size: 1em;
-    font-weight: 500;
+    font-size: 1.2em;
+    font-weight: 700;
 }
 
 .description {
-    display: none;
+    font-size: 0.8em;
+    padding: 0 10px;
 }
 
 .button__container {
@@ -55,6 +64,10 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
+}
+
+.price {
+
 }
 
 .delete__icon {

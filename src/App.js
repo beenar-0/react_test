@@ -36,8 +36,10 @@ function App() {
     }
 
     function removePost(post) {
+        PostService.deletePost(post._id)
         setPosts(posts.filter((p) => {
-            return p.id !== post.id
+            console.log(post._id)
+            return p._id !== post._id
         }))
     }
 
