@@ -36,7 +36,7 @@ function App() {
     }
 
     function removePost(post) {
-        PostService.deletePost(post._id)
+        // PostService.deletePost(post._id)
         setPosts(posts.filter((p) => {
             console.log(post._id)
             return p._id !== post._id
@@ -44,7 +44,7 @@ function App() {
     }
 
     return (
-        <div className={isMenuActive
+        <div className={isMenuActive || modalActive
             ? 'App _lock'
             : 'App'}>
             <div className={isMenuActive
@@ -54,19 +54,31 @@ function App() {
             </div>
             <MySideMenu menuActive={isMenuActive}/>
             <MyHeader menuActive={isMenuActive} setMenu={setIsMenuActive}/>
-            {/*<MyButton onClick={() => setModalActive(true)}>Добавить пост</MyButton>*/}
-            {/*<MyModal*/}
-            {/*    modalActive={modalActive}*/}
-            {/*    setModalActive={setModalActive}*/}
-            {/*>*/}
-            {/*    <PostForm create={createPost}/>*/}
-            {/*</MyModal>*/}
+            <MyModal
+                modalActive={modalActive}
+                setModalActive={setModalActive}
+            >
+                <PostForm
+                    loading={isPostsLoading}
+                    fetchPosts={fetchPosts}
+                    create={createPost}
+                />
+            </MyModal>
             <MyFilter filter={filter} setFilter={setFilter}/>
+            <MyButton onClick={()=>{
+                setModalActive(true)
+            }}>Add new card</MyButton>
             {isPostsLoading
                 ? <Spinner animation="border" variant="warning" style={{width: 100, height: 100, margin: 50}}/>
                 : error
                     ? <h1>Error: {error}</h1>
-                    : <PostList posts={sortedAndSearchedPosts} remove={removePost}/>
+                    : <PostList
+                        loading={isPostsLoading}
+                        fetchPosts={fetchPosts}
+                        posts={sortedAndSearchedPosts}
+                        remove={removePost}
+                        edit={setModalActive}
+                    />
             }
         </div>
     );

@@ -41,6 +41,8 @@ p {
 }
 
 .description {
+    word-break: normal;
+    white-space: normal;
     font-size: 0.8em;
     padding: 0 10px;
 }

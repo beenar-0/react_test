@@ -10,6 +10,10 @@
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
+.myInput::placeholder {
+    color: #D6D6D6;
+}
+
 .myInput:focus {
     outline: 0;
     border-color: #FFA451;

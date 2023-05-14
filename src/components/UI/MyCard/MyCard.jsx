@@ -1,8 +1,23 @@
 import React from 'react';
 import MyButton from "../MyButton/MyButton";
 import classes from "./MyCard.module.css"
+import PostService from "../../../API/PostService";
 
-const MyCard = ({post, remove}) => {
+const MyCard = ({post, remove, edit, loading, fetchPosts}) => {
+
+    function deleteCat() {
+        PostService.deletePost(post._id)
+            .then (()=>{
+                remove(post)
+            })
+            .catch((err)=>{
+                console.log(err)
+            })
+            .finally(()=>{
+                loading = false
+                fetchPosts()
+            })
+    }
 
     function limitStr(str, n, symb = '...') {
         if (!n && !symb) return str;
@@ -17,12 +32,15 @@ const MyCard = ({post, remove}) => {
                 <p className={classes.description}>{post.description}</p>
                 <p className={classes.price}>{post.price}$</p>
                 <div className={classes.button__container}>
-                    <button className={classes.button} onClick={()=>{
-                        remove(post)
-                    }}>
+                    <button className={classes.button} onClick={deleteCat}>
                         <div className={classes.delete__icon}></div>
                     </button>
-                    <button className={classes.button} onClick={()=>{}}>
+                    <button
+                        className={classes.button}
+                        onClick={()=>{
+                            edit(true)
+                        }}
+                    >
                         <div className={classes.edit__icon}></div>
                     </button>
                 </div>

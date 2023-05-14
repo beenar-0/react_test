@@ -14,4 +14,12 @@ export default class PostService {
             }
         })
     }
+
+    static async addPost(post) {
+        await axios.post('http://localhost:3001/add-cat', post, {
+            headers: {
+                'Content-Type':'application/x-www-form-urlencoded'
+            }
+        })
+    }
 }

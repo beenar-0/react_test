@@ -1,10 +1,11 @@
 .myBtn {
+    margin: 5px;
     border-radius: 3px;
-    padding: 5px;
+    padding: 5px 20px;
     width: fit-content;
     height: fit-content;
     border: 2px #FFA451 solid;
-    color: #FFA451;
-    background: white;
+    color: white;
+    background: #FFA451;
     cursor: pointer;
 }
