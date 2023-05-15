@@ -15,16 +15,13 @@ import PostForm from "../components/PostForm";
 
 
 
-function AdminPanel() {
+function AdminPanel({modalActive, setModalActive, isEditActive, setEditActive, isMenuActive, setIsMenuActive}) {
 
     const [fetchPosts, isPostsLoading, error] = useFetching(async () => {
         setPosts(await PostService.getAllPosts())
     })
     const [posts, setPosts] = useState([])
     const [filter, setFilter] = useState({sort: '', query: ''})
-    const [modalActive, setModalActive] = useState(false)
-    const [isEditActive, setEditActive] = useState(false)
-    const [isMenuActive, setIsMenuActive] = useState(false)
     const sortedAndSearchedPosts = usePost(posts, filter.sort, filter.query)
     const [editingPost, setEditingPost] = useState({name: "", description: "", price: "", img: "", type: ""})
 
@@ -44,17 +41,7 @@ function AdminPanel() {
     }
 
     return (
-        <div className={isMenuActive || modalActive || isEditActive
-            ? 'App _lock'
-            : 'App'
-        }>
-            <div className={isMenuActive
-                ? 'lockScreen _active'
-                : 'lockScreen'
-            }>
-            </div>
-            <MySideMenu menuActive={isMenuActive}/>
-            <MyHeader menuActive={isMenuActive} setMenu={setIsMenuActive}/>
+            <div className="app-container">
             <MyModal
                 modalActive={modalActive}
                 setModalActive={setModalActive}
@@ -94,7 +81,7 @@ function AdminPanel() {
                         remove={removePost}
                     />
             }
-        </div>
+            </div>
     );
 }
 

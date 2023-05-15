@@ -1,17 +1,18 @@
 import classes from "./MySideMenu.module.css";
+import {BrowserRouter, Route, Routes, Link} from "react-router-dom"
 
 const MySideMenu = ({menuActive}) => {
-    // app.current.className='App lock'
+
     return (
         <div className={menuActive
             ? 'sideMenuContainer _active'
             : 'sideMenuContainer'
         }>
-            <ul className={classes.list}>
-                <li className={classes.list__item}>Main Page</li>
-                <li className={classes.list__item}>Cart</li>
-                <li className={classes.list__item}>Admin panel</li>
-                <li className={classes.list__item}>About</li>
+            <ul className={"list"}>
+                <li className={"list__item"}><Link to={'/about'}>Main Page</Link></li>
+                <li className={"list__item"}><Link to={'/about'}>Cart</Link></li>
+                <li className={"list__item"}><Link to={'/admin-panel'}>Admin panel</Link></li>
+                <li className={"list__item"}><Link to={'/about'}>About</Link></li>
             </ul>
         </div>
     );

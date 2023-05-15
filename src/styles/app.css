@@ -50,6 +50,18 @@ body {
     overflow-y: hidden;
 }
 
+.app-container {
+    position: relative;
+    overflow: hidden;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 390px;
+    min-height: 100vh;
+}
+
 .lockScreen {
     display: none;
     z-index: 5;
@@ -137,4 +149,21 @@ h1 {
 
 .sideMenuContainer._active {
     transform: translate(0);
+}
+
+.list {
+    margin: 60px 0 0 20px;
+    list-style-type: none;
+    font-weight: 700;
+    font-size: 1.5em;
+    color: grey;
+}
+
+.list__item {
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+.list__item:hover {
+    color: #FFA451;
 }
