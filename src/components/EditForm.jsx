@@ -1,17 +1,16 @@
-import React, {useState} from 'react';
 import MyInput from "./UI/MyInput/MyInput";
 import MyButton from "./UI/MyButton/MyButton";
 import MySelect from "./UI/MySelect/MySelect";
 import PostService from "../API/PostService";
 
-const EditForm = ({loading, editingPost, editPost, fetchPosts, setEditingPost}) => {
+const EditForm = ({loading, editingPost, setEditActive, fetchPosts, setEditingPost}) => {
 
     function edit(e) {
         e.preventDefault()
         loading = true
         PostService.editPost(editingPost._id, editingPost)
             .then(()=>{
-                editPost(editingPost)
+                setEditActive(false)
             })
             .catch((error)=>{
                 console.log(error)
