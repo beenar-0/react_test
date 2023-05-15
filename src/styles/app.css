@@ -16,7 +16,7 @@ input[type=number] {
 }
 
 body {
-    overflow-y:scroll;
+    overflow-y: scroll;
     max-width: 100%;
     display: flex;
     flex-direction: column;
@@ -70,7 +70,7 @@ body {
     right: 0;
     bottom: 0;
     left: 0;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0, 0, 0, 0.5);
 }
 
 .lockScreen._active {
@@ -96,7 +96,6 @@ h1 {
 }
 
 
-
 .post__container {
     align-items: center;
     display: flex;
@@ -114,7 +113,7 @@ h1 {
     width: 100%;
     margin: 10px 0;
     justify-content: center;
-    gap:5px;
+    gap: 5px;
 }
 
 .postList__title {
@@ -162,8 +161,79 @@ h1 {
 .list__item {
     cursor: pointer;
     margin: 10px 0;
+    text-decoration: none;
 }
 
 .list__item:hover {
     color: #FFA451;
+}
+
+a {
+    color: grey;
+}
+
+.about__container {
+    padding: 10px 35px;
+    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.about-title {
+    margin: 15px 0;
+}
+
+.developer__list,
+.stack__list {
+    list-style: none;
+    padding: 0 0 0 10px;
+}
+
+.stack__item {
+    margin: 5px 0;
+    font-size: 1.2em;
+    display: flex;
+    align-items: center;
+    list-style: none;
+}
+
+.stack__item:before {
+    margin: 0 10px 0 0;
+    display: block;
+    content: '';
+    width: 40px;
+    height: 40px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.react:before {
+    background-image: url("../assets/icons/react.png");
+}
+
+.node:before {
+    background-image: url("../assets/icons/nodeJS.png");
+}
+
+.mongo:before {
+    background-image: url("../assets/icons/mongo.webp");
+}
+
+.router:before {
+    background-image: url("../assets/icons/react-router.png");
+}
+
+.axios:before {
+    background-image: url("../assets/icons/Axios.png");
+}
+
+.mongoose:before {
+    background-image: url("../assets/icons/mongoose.png");
+}
+
+.express:before {
+    background-image: url("../assets/icons/express.svg");
 }

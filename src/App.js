@@ -40,10 +40,10 @@ function App() {
                     : 'sideMenuContainer'
                 }>
                     <ul className={"list"}>
-                        <li className="list__item"><Link onClick={closeMenu} to='/about'>Main Page</Link></li>
-                        <li className="list__item"><Link onClick={closeMenu} to='/about'>Cart</Link></li>
-                        <li className="list__item"><Link onClick={closeMenu} to='/admin-panel'>Admin panel</Link></li>
-                        <li className="list__item"><Link onClick={closeMenu} to='/about'>About</Link></li>
+                        <li className="list__item"><Link className="list__item" onClick={closeMenu} to='/about'>Main Page</Link></li>
+                        <li className="list__item"><Link className="list__item" onClick={closeMenu} to='/about'>Cart</Link></li>
+                        <li className="list__item"><Link className="list__item" onClick={closeMenu} to='/admin-panel'>Admin panel</Link></li>
+                        <li className="list__item"><Link className="list__item" onClick={closeMenu} to='/about'>About</Link></li>
                     </ul>
                 </div>
                 <MyHeader setBurger={setBurger} isBurgerChecked={isBurgerChecked}/>
