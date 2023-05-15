@@ -3,21 +3,15 @@ import MyInput from "./UI/MyInput/MyInput";
 import MyButton from "./UI/MyButton/MyButton";
 import MySelect from "./UI/MySelect/MySelect";
 import PostService from "../API/PostService";
-import {logDOM} from "@testing-library/react";
 
-const PostForm = ({loading, create, fetchPosts}) => {
+const EditForm = ({loading, editingPost, editPost, fetchPosts, setEditingPost}) => {
 
-    const [post, setPost] = useState({name: "", description: "", price:"", img:"", type:""})
-
-    function addNewPost(e) {
+    function edit(e) {
         e.preventDefault()
         loading = true
-        const newPost = {
-            ...post,
-        }
-        PostService.addPost(newPost)
+        PostService.editPost(editingPost._id, editingPost)
             .then(()=>{
-                create(newPost)
+                editPost(editingPost)
             })
             .catch((error)=>{
                 console.log(error)
@@ -25,27 +19,26 @@ const PostForm = ({loading, create, fetchPosts}) => {
             .finally(()=>{
                 loading = false
                 fetchPosts()
-                setPost({name: "", description: "", price:"", img:"", type:""})
+                setEditingPost({name: "", description: "", price:"", img:"", type:""})
             })
     }
-
 
     return (
         <form className={'postForm'}>
             <MyInput
                 maxLength={10}
-                value={post.name}
+                value={editingPost.name}
                 onChange={(e) => {
-                    return setPost({...post, name: e.target.value})
+                    return setEditingPost({...editingPost, name: e.target.value})
                 }}
                 type="text"
                 placeholder="Name"
             />
             <MyInput
                 maxLength={30}
-                value={post.description}
+                value={editingPost.description}
                 onChange={(e) => {
-                    return setPost({...post, description: e.target.value})
+                    return setEditingPost({...editingPost, description: e.target.value})
                 }}
                 type="text"
                 placeholder="Short description"
@@ -53,22 +46,22 @@ const PostForm = ({loading, create, fetchPosts}) => {
             <MyInput
                 type="number"
                 maxLength={4}
-                value={post.price}
+                value={editingPost.price}
                 onChange={(e) => {
-                    return setPost({...post, price: e.target.value})
+                    return setEditingPost({...editingPost, price: e.target.value})
                 }}
                 placeholder="Price"
             />
             <MyInput
-                value={post.img}
+                value={editingPost.img}
                 onChange={(e) => {
-                    return setPost({...post, img: e.target.value})
+                    return setEditingPost({...editingPost, img: e.target.value})
                 }}
                 type="url"
                 placeholder="Img URL"
             />
             <MySelect
-                value={post.type}
+                value={editingPost.type}
                 options={[
                     {name: 'Kind', value: 'kind'},
                     {name: 'Angry', value: 'angry'},
@@ -76,12 +69,12 @@ const PostForm = ({loading, create, fetchPosts}) => {
                 ]}
                 defaultOption={"Type:"}
                 onChange={(selectedType)=>{
-                    return setPost({...post, type:selectedType})
+                    return setEditingPost({...editingPost, type:selectedType})
                 }}
             />
-            <MyButton onClick={addNewPost}>Add</MyButton>
+            <MyButton onClick={edit}>Save</MyButton>
         </form>
     );
 };
 
-export default PostForm;
+export default EditForm;

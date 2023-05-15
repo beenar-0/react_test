@@ -22,4 +22,12 @@ export default class PostService {
             }
         })
     }
+
+    static async editPost(postId, post) {
+        await axios.post('http://localhost:3001/edit-cat', {postId, post}, {
+            headers: {
+                'Content-Type':'application/json'
+            }
+        })
+    }
 }

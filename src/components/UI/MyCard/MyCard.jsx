@@ -3,7 +3,7 @@ import MyButton from "../MyButton/MyButton";
 import classes from "./MyCard.module.css"
 import PostService from "../../../API/PostService";
 
-const MyCard = ({post, remove, edit, loading, fetchPosts}) => {
+const MyCard = ({post, remove, loading, fetchPosts, setEditingPost, setEditActive}) => {
 
     function deleteCat() {
         PostService.deletePost(post._id)
@@ -38,7 +38,8 @@ const MyCard = ({post, remove, edit, loading, fetchPosts}) => {
                     <button
                         className={classes.button}
                         onClick={()=>{
-                            edit(true)
+                            setEditActive(true)
+                            setEditingPost(post)
                         }}
                     >
                         <div className={classes.edit__icon}></div>
