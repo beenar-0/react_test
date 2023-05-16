@@ -4,8 +4,6 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import useFetching from "../hooks/useFetching";
 import PostService from "../API/PostService";
 import usePost from "../hooks/usePost";
-import MySideMenu from "../components/UI/MySideMenu/MySideMenu";
-import MyHeader from "../components/UI/MyHeader/MyHeader";
 import MyModal from "../components/UI/MyModal/MyModal";
 import EditForm from "../components/EditForm";
 import MyFilter from "../components/UI/MyFilter/MyFilter";
@@ -15,7 +13,10 @@ import PostForm from "../components/PostForm";
 
 
 
-function AdminPanel({modalActive, setModalActive, isEditActive, setEditActive, isMenuActive, setIsMenuActive}) {
+function AdminPanel({modalActive, setModalActive, isEditActive, setEditActive, setAddedPosts, addedPosts}) {
+    const isAdmin = false
+
+
 
     const [fetchPosts, isPostsLoading, error] = useFetching(async () => {
         setPosts(await PostService.getAllPosts())
@@ -65,14 +66,18 @@ function AdminPanel({modalActive, setModalActive, isEditActive, setEditActive, i
                 />
             </MyModal>
             <MyFilter filter={filter} setFilter={setFilter}/>
-            <MyButton onClick={() => {
-                setModalActive(true)
-            }}>Add new card</MyButton>
+                {
+                    isAdmin &&
+                    <MyButton onClick={() => {setModalActive(true)}}>Add new card</MyButton>
+                }
             {isPostsLoading
                 ? <Spinner animation="border" variant="warning" style={{width: 100, height: 100, margin: 50}}/>
                 : error
                     ? <h1>Error: {error}</h1>
                     : <PostList
+                        addedPosts={addedPosts}
+                        setAddedPosts={setAddedPosts}
+                        isAdmin={isAdmin}
                         setEditActive={setEditActive}
                         setEditingPost={setEditingPost}
                         loading={isPostsLoading}

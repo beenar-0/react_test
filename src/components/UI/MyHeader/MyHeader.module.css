@@ -22,6 +22,7 @@
 }
 
 .basket {
+    position: relative;
     cursor: pointer;
     width: 30px;
     height: 30px;
@@ -87,4 +88,22 @@ input[type="checkbox"]:checked ~ span:nth-of-type(3){
     width:50%;
     transform: translate(13px,-9px) rotatez(45deg);
 
+}
+
+.counter {
+    padding: 1px 0 0 0;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    right: -8px;
+    top: -5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 10px;
+    font-weight: 700;
+    color: white;
+    border-radius: 50%;
+    background: #028A0F;
 }

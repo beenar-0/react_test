@@ -1,13 +1,16 @@
 import React, {useState} from 'react';
 import MyCard from "./UI/MyCard/MyCard";
 
-const PostList = ({posts, remove, fetchPosts, loading, setEditingPost, setEditActive}) => {
+const PostList = ({posts, remove, fetchPosts, loading, setEditingPost, setEditActive, isAdmin, setAddedPosts, addedPosts}) => {
 
     return (
         <div className="postList">
             {posts.length
                 ? posts.map((post) => {
                     return <MyCard
+                        addedPosts={addedPosts}
+                        setAddedPosts={setAddedPosts}
+                        isAdmin={isAdmin}
                         setEditActive={setEditActive}
                         setEditingPost={setEditingPost}
                         loading={loading}

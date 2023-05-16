@@ -11,6 +11,7 @@ function App() {
     const [isEditActive, setEditActive] = useState(false)
     const [isMenuActive, setIsMenuActive] = useState(false)
     const [isBurgerChecked, setBurgerChecked] = useState(false)
+    const [addedPosts, setAddedPosts] = useState([])
 
     function closeMenu() {
         setBurgerChecked(false)
@@ -46,17 +47,25 @@ function App() {
                         <li className="list__item"><Link className="list__item" onClick={closeMenu} to='/about'>About</Link></li>
                     </ul>
                 </div>
-                <MyHeader setBurger={setBurger} isBurgerChecked={isBurgerChecked}/>
+                <MyHeader
+                    addedPosts={addedPosts}
+                    setBurger={setBurger}
+                    isBurgerChecked={isBurgerChecked}
+                />
 
                 <Routes>
-                    <Route path="/admin-panel" element={<AdminPanel
+                    <Route path="/admin-panel" element={
+                        <AdminPanel
+                        setAddedPosts={setAddedPosts}
+                        addedPosts={addedPosts}
                         modalActive={modalActive}
                         setModalActive={setModalActive}
                         isEditActive={isEditActive}
                         setEditActive={setEditActive}
                         isMenuActive={isMenuActive}
                         setIsMenuActive={setIsMenuActive}
-                    />}/>
+                    />
+                    }/>
                     <Route path="/about" element={<About/>}/>
                 </Routes>
             </div>
