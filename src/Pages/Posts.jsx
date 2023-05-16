@@ -13,10 +13,7 @@ import PostForm from "../components/PostForm";
 
 
 
-function AdminPanel({modalActive, setModalActive, isEditActive, setEditActive, setAddedPosts, addedPosts}) {
-    const isAdmin = false
-
-
+function Posts({modalActive, setModalActive, isEditActive, setEditActive, setAddedPosts, addedPosts, isAdmin}) {
 
     const [fetchPosts, isPostsLoading, error] = useFetching(async () => {
         setPosts(await PostService.getAllPosts())
@@ -27,6 +24,7 @@ function AdminPanel({modalActive, setModalActive, isEditActive, setEditActive, s
     const [editingPost, setEditingPost] = useState({name: "", description: "", price: "", img: "", type: ""})
 
     useEffect(() => {
+        if (isAdmin) setAddedPosts([])
         fetchPosts()
     }, [])
 
@@ -90,4 +88,4 @@ function AdminPanel({modalActive, setModalActive, isEditActive, setEditActive, s
     );
 }
 
-export default AdminPanel;
+export default Posts;

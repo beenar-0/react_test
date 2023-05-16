@@ -159,9 +159,16 @@ h1 {
 }
 
 .list__item {
+    color: grey;
     cursor: pointer;
     margin: 10px 0;
     text-decoration: none;
+}
+
+.list__item.inCart{
+    display: block;
+    width: 100%;
+    height: 100%;
 }
 
 .list__item:hover {
@@ -238,3 +245,58 @@ a {
     background-image: url("../assets/icons/express.svg");
 }
 
+.cart__container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.cart__list {
+    margin: 0;
+    padding: 30px 40px 30px;
+}
+
+.cart-item {
+    border-radius: 5px;
+    background: rgba(255, 164, 81, 0.2);
+    padding: 5px 15px;
+    margin: 5px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-item__container {
+    margin-right: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.delete_cart-item {
+    background: url("../../src/assets/icons/delete.svg") center no-repeat;
+    background-size: contain;
+    border: none;
+    min-width: 15px;
+    width: 15px;
+    height: 15px;
+}
+
+.cart__wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.cart__totalPrice {
+    padding: 0 40px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.emptyCart__msg {
+    font-size: 1.5em;
+    padding: 40px;
+    width: 100%;
+    text-align: center;
+}

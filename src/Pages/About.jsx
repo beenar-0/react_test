@@ -1,6 +1,11 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
-const About = () => {
+const About = ({setAddedPosts}) => {
+
+    useEffect(() => {
+        setAddedPosts([])
+            }, [])
+
     return (
         <div className="about__container">
             <h2 className="about-title">Developers:</h2>

@@ -1,8 +1,10 @@
 import React, {useState} from "react";
-import {BrowserRouter, Route, Routes, Link} from "react-router-dom"
+import {BrowserRouter, Route, Routes, Link, Navigate} from "react-router-dom"
 import About from "./Pages/About";
-import AdminPanel from "./Pages/AdminPanel";
+import Posts from "./Pages/Posts";
 import MyHeader from "./components/UI/MyHeader/MyHeader";
+import Admin from "./Pages/Admin";
+import Cart from "./Pages/Cart";
 
 
 function App() {
@@ -41,10 +43,14 @@ function App() {
                     : 'sideMenuContainer'
                 }>
                     <ul className={"list"}>
-                        <li className="list__item"><Link className="list__item" onClick={closeMenu} to='/about'>Main Page</Link></li>
-                        <li className="list__item"><Link className="list__item" onClick={closeMenu} to='/about'>Cart</Link></li>
-                        <li className="list__item"><Link className="list__item" onClick={closeMenu} to='/admin-panel'>Admin panel</Link></li>
-                        <li className="list__item"><Link className="list__item" onClick={closeMenu} to='/about'>About</Link></li>
+                        <li className="list__item">
+                            <Link className="list__item" onClick={closeMenu} to='/main-page'>Main Page</Link></li>
+                        <li className="list__item">
+                            <Link className="list__item" onClick={closeMenu} to='/cart'>Cart</Link></li>
+                        <li className="list__item">
+                            <Link className="list__item" onClick={closeMenu} to='/admin-panel'>Admin panel</Link></li>
+                        <li className="list__item">
+                            <Link className="list__item" onClick={closeMenu} to='/about'>About</Link></li>
                     </ul>
                 </div>
                 <MyHeader
@@ -54,19 +60,39 @@ function App() {
                 />
 
                 <Routes>
-                    <Route path="/admin-panel" element={
-                        <AdminPanel
-                        setAddedPosts={setAddedPosts}
-                        addedPosts={addedPosts}
-                        modalActive={modalActive}
-                        setModalActive={setModalActive}
-                        isEditActive={isEditActive}
-                        setEditActive={setEditActive}
-                        isMenuActive={isMenuActive}
-                        setIsMenuActive={setIsMenuActive}
-                    />
+                    <Route path="/main-page" element={
+                        <Posts
+                            isAdmin={false}
+                            setAddedPosts={setAddedPosts}
+                            addedPosts={addedPosts}
+                            modalActive={modalActive}
+                            setModalActive={setModalActive}
+                            isEditActive={isEditActive}
+                            setEditActive={setEditActive}
+                            isMenuActive={isMenuActive}
+                            setIsMenuActive={setIsMenuActive}
+                        />
                     }/>
-                    <Route path="/about" element={<About/>}/>
+                    <Route path="/cart" element={
+                        <Cart
+                            setAddedPosts={setAddedPosts}
+                            addedPosts={addedPosts}
+                        />}/>
+                    <Route path="/admin-panel" element={
+                        <Admin
+                            isAdmin={true}
+                            setAddedPosts={setAddedPosts}
+                            addedPosts={addedPosts}
+                            modalActive={modalActive}
+                            setModalActive={setModalActive}
+                            isEditActive={isEditActive}
+                            setEditActive={setEditActive}
+                            isMenuActive={isMenuActive}
+                            setIsMenuActive={setIsMenuActive}
+                        />
+                    }/>
+                    <Route path="/about" element={<About setAddedPosts={setAddedPosts}/>}/>
+                    <Route path="*" element={<Navigate to="/main-page" replace />} />
                 </Routes>
             </div>
         </BrowserRouter>
