@@ -14,14 +14,18 @@ import PostForm from "../components/PostForm";
 
 
 function Posts({modalActive, setModalActive, isEditActive, setEditActive, setAddedPosts, addedPosts, isAdmin}) {
-
+    const [currentType, setCurrentType] = useState("all")
     const [fetchPosts, isPostsLoading, error] = useFetching(async () => {
-        setPosts(await PostService.getAllPosts())
+        setPosts(await PostService.getPosts(currentType))
     })
+    useEffect(()=>{
+        fetchPosts(currentType)
+    }, [currentType])
     const [posts, setPosts] = useState([])
     const [filter, setFilter] = useState({sort: '', query: ''})
     const sortedAndSearchedPosts = usePost(posts, filter.sort, filter.query)
     const [editingPost, setEditingPost] = useState({name: "", description: "", price: "", img: "", type: ""})
+
 
     useEffect(() => {
         if (isAdmin) setAddedPosts([])
@@ -63,7 +67,13 @@ function Posts({modalActive, setModalActive, isEditActive, setEditActive, setAdd
                     editingPost={editingPost}
                 />
             </MyModal>
-            <MyFilter filter={filter} setFilter={setFilter}/>
+            <MyFilter
+                fetchPosts={fetchPosts}
+                setCurrentType={setCurrentType}
+                currentType={currentType}
+                filter={filter}
+                setFilter={setFilter}
+            />
                 {
                     isAdmin &&
                     <MyButton onClick={() => {setModalActive(true)}}>Add new card</MyButton>
@@ -73,6 +83,7 @@ function Posts({modalActive, setModalActive, isEditActive, setEditActive, setAdd
                 : error
                     ? <h1>Error: {error}</h1>
                     : <PostList
+                        currentType={currentType}
                         addedPosts={addedPosts}
                         setAddedPosts={setAddedPosts}
                         isAdmin={isAdmin}

@@ -1,8 +1,8 @@
 import axios from "axios";
 
 export default class PostService {
-    static async getAllPosts() {
-            return (await axios.get('http://localhost:3001/get-all')).data
+    static async getPosts(type) {
+            return (await axios.get(`http://localhost:3001/get-${type}`)).data
     }
 
     static async getTypeCats(type) {

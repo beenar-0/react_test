@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import classes from "./MyCard.module.css"
 import PostService from "../../../API/PostService";
 
-const MyCard = ({post, remove, loading, fetchPosts, setEditingPost, setEditActive, isAdmin, setAddedPosts, addedPosts}) => {
+const MyCard = ({post, remove, loading, fetchPosts, setEditingPost, setEditActive, isAdmin, setAddedPosts, addedPosts, currentType}) => {
 
     function deleteCat() {
         PostService.deletePost(post._id)
@@ -14,14 +14,17 @@ const MyCard = ({post, remove, loading, fetchPosts, setEditingPost, setEditActiv
             })
             .finally(() => {
                 loading = false
-                fetchPosts()
+                fetchPosts(currentType)
             })
     }
-
 
     const [isAdded, setIsAdded] = useState(false)
     const notAddedClasses = [classes.button, classes.cart__btn]
     const addedClasses = [classes.button, classes.cart__btn, classes.cart__added]
+
+    useEffect(()=>{
+       if ([...addedPosts].find((p)=>p._id === post._id)) setIsAdded(true)
+    })
 
 
     return (

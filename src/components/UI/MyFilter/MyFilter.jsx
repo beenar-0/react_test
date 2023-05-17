@@ -3,13 +3,8 @@ import MyInput from "../MyInput/MyInput";
 import MySelect from "../MySelect/MySelect";
 import classes from "./MyFilter.module.css";
 
-const MyFilter = ({filter, setFilter}) => {
-
-    function getTypePosts(type) {
-
-    }
-
-    return (
+const MyFilter = ({filter, setFilter, currentType, setCurrentType}) => {
+        return (
         <div className={classes.myFilter__container}>
             <MyInput
                 type="text"
@@ -32,18 +27,33 @@ const MyFilter = ({filter, setFilter}) => {
             />
             <div className={classes.catTypes__container}>
                 <ul className={classes.catTypes__list}>
-                    <li className={[classes.catTypes__item, classes.active].join(" ")} onClick={()=>{
-
-                    }}>All</li>
-                    <li className={classes.catTypes__item} onClick={()=>{
-
-                    }}>Kind</li>
-                    <li className={classes.catTypes__item} onClick={()=>{
-
-                    }}>Angry</li>
-                    <li className={classes.catTypes__item} onClick={()=>{
-
-                    }}>Sad</li>
+                    <li >
+                        <button
+                            className={currentType === "all" ? [classes.catTypes__item, classes.active].join(' ') : classes.catTypes__item}
+                            onClick={()=>{
+                                setCurrentType('all')
+                            }}
+                        >All</button></li>
+                    <li >
+                        <button
+                            className={currentType === "kind" ? [classes.catTypes__item, classes.active].join(' ') : classes.catTypes__item}
+                            onClick={()=>{
+                        setCurrentType('kind')
+                    }}
+                        >Kind</button></li>
+                    <li >
+                        <button
+                            className={currentType === "angry" ? [classes.catTypes__item, classes.active].join(' ') : classes.catTypes__item}
+                            onClick={()=>{
+                                setCurrentType('angry')
+                            }}
+                        >Angry</button></li><li >
+                    <button
+                        className={currentType === "sad" ? [classes.catTypes__item, classes.active].join(' ') : classes.catTypes__item}
+                        onClick={()=>{
+                            setCurrentType('sad')
+                        }}
+                    >Sad</button></li>
                 </ul>
             </div>
         </div>
