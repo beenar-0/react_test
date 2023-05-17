@@ -1,4 +1,3 @@
-import React, {useState} from 'react';
 import MyCard from "./UI/MyCard/MyCard";
 
 const PostList = ({posts, remove, fetchPosts, loading, setEditingPost, setEditActive, isAdmin, setAddedPosts, addedPosts, currentType}) => {

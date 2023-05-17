@@ -5,8 +5,12 @@ export default class PostService {
             return (await axios.get(`http://localhost:3001/get-${type}`)).data
     }
 
-    static async getTypeCats(type) {
-        return (await axios.get(`http://localhost:3001/get-${type}`)).data
+    static async sendOrder(order) {
+        await axios.post('http://localhost:3001/order', order, {
+            headers: {
+                'Content-Type':'application/json'
+            }
+        })
     }
 
     static async deletePost(id) {

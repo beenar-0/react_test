@@ -1,4 +1,3 @@
-import React, {useMemo} from 'react';
 import MyInput from "../MyInput/MyInput";
 import MySelect from "../MySelect/MySelect";
 import classes from "./MyFilter.module.css";

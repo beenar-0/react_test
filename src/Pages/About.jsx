@@ -1,6 +1,4 @@
-import React, {useEffect} from 'react';
-
-const About = ({setAddedPosts}) => {
+const About = () => {
 
     return (
         <div className="about__container">

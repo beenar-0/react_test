@@ -33,7 +33,9 @@ function App() {
                 ? 'App _lock'
                 : 'App'
             }>
-                <div className={isMenuActive
+                <div
+                    onClick={closeMenu}
+                    className={isMenuActive
                     ? 'lockScreen _active'
                     : 'lockScreen'
                 }>
@@ -91,7 +93,7 @@ function App() {
                             setIsMenuActive={setIsMenuActive}
                         />
                     }/>
-                    <Route path="/about" element={<About setAddedPosts={setAddedPosts}/>}/>
+                    <Route path="/about" element={<About/>}/>
                     <Route path="*" element={<Navigate to="/main-page" replace />} />
                 </Routes>
             </div>
