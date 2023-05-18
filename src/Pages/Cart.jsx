@@ -9,7 +9,7 @@ const Cart = ({addedPosts, setAddedPosts}) => {
     const [fetching, isLoading, error] = useFetching(async () => {
         await PostService.sendOrder(order)
     })
-    const [order, setOrder] = useState({name: '', address: '', email: '', phoneNumber: ''})
+    const [order, setOrder] = useState({name: '', address: '', email: '', phoneNumber: '', cats:addedPosts})
 
     let price = 0
     return (
