@@ -7,20 +7,22 @@ import PostService from "../API/PostService";
 const PostForm = ({loading, create, fetchPosts}) => {
 
     const [post, setPost] = useState({name: "", description: "", price:"", img:"", type:""})
-    // const [validationError, setValidationError] = useState([])
+    const [error, setError] = useState([])
+    let validationError = []
 
     function addNewPost(e) {
         e.preventDefault()
-        // setValidationError([])
-        // const checkName = new RegExp('^([A-Za-z])+$')
-        // const checkDescription = new RegExp('^([A-Za-z\\s0-9])+$')
-        // const checkPrice = new RegExp('^([0-9])+$')
-        // const checkURL = new RegExp('^https?:\\/\\/.+\\.(jpg|jpeg|png|webp|avif|svg)$')
-        // if (!checkName.test(post.name)) setValidationError([...validationError, 'Incorrect name!'])
-        // if (!checkDescription.test(post.description)) setValidationError([...validationError, 'Incorrect description!'])
-        // if (!checkPrice.test(post.price)) setValidationError([...validationError, 'Incorrect price!'])
-        // if (!checkURL.test(post.img)) setValidationError([...validationError, 'Incorrect image link!'])
-        // if (post.type === '') setValidationError([...validationError, 'Chose type!'])
+        validationError = []
+        const checkName = new RegExp('^([A-Za-z])+$')
+        const checkDescription = new RegExp('^([A-Za-z\\s0-9.,!?])+$')
+        const checkPrice = new RegExp('^([0-9])+$')
+        const checkURL = new RegExp('^https?:\\/\\/.+\\.(jpg|jpeg|png|webp|avif|svg)$')
+        if (!checkName.test(post.name)) validationError.push('Incorrect name!')
+        if (!checkDescription.test(post.description)) validationError.push('Incorrect description!')
+        if (!checkPrice.test(post.price)) validationError.push('Incorrect price!')
+        if (!checkURL.test(post.img)) validationError.push('Incorrect image link!')
+        if (post.type === '') validationError.push('Chose type!')
+        if (validationError.length === 0) {
             loading = true
             const newPost = {
                 ...post,
@@ -37,6 +39,8 @@ const PostForm = ({loading, create, fetchPosts}) => {
                     fetchPosts()
                     setPost({name: "", description: "", price:"", img:"", type:""})
                 })
+        } else setError(validationError)
+
     }
 
 
@@ -89,7 +93,9 @@ const PostForm = ({loading, create, fetchPosts}) => {
                     return setPost({...post, type:selectedType})
                 }}
             />
-            {/*{validationError.length > 0 && <div>{validationError.join('\n')}</div>}*/}
+            {error.length > 0 && <div>{error.map((err)=>{
+                return <div key={err} className="error">{err}</div>
+            })}</div>}
             <MyButton onClick={addNewPost}>Add</MyButton>
         </form>
     );
