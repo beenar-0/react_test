@@ -5,6 +5,7 @@ import classes from "./MyFilter.module.css";
 const MyFilter = ({filter, setFilter, currentType, setCurrentType}) => {
         return (
         <div className={classes.myFilter__container}>
+
             <MyInput
                 type="text"
                 placeholder="Search..."
@@ -24,6 +25,7 @@ const MyFilter = ({filter, setFilter, currentType, setCurrentType}) => {
                 ]}
                 defaultOption={"Sort by:"}
             />
+
             <div className={classes.catTypes__container}>
                 <ul className={classes.catTypes__list}>
                     <li >
