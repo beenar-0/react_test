@@ -50,7 +50,7 @@ const EditForm = ({loading, editingPost, setEditActive, fetchPosts, setEditingPo
                 placeholder="Name"
             />
             <MyInput
-                maxLength={30}
+                maxLength={35}
                 value={editingPost.description}
                 onChange={(e) => {
                     return setEditingPost({...editingPost, description: e.target.value})
