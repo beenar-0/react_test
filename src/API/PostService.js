@@ -2,11 +2,11 @@ import axios from "axios";
 
 export default class PostService {
     static async getPosts(type) {
-            return (await axios.get(`http://localhost:3001/get-${type}`)).data
+            return (await axios.get(`https://shrouded-retreat-68754.herokuapp.com/get-${type}`)).data
     }
 
     static async sendOrder(order) {
-        await axios.post('http://localhost:3001/order', order, {
+        await axios.post('https://shrouded-retreat-68754.herokuapp.com/order', order, {
             headers: {
                 'Content-Type':'application/json'
             }
@@ -14,7 +14,7 @@ export default class PostService {
     }
 
     static async deletePost(id) {
-        await axios.post('http://localhost:3001/delete-cat',  {
+        await axios.post('https://shrouded-retreat-68754.herokuapp.com/delete-cat',  {
            id
         }, {
             headers: {
@@ -24,7 +24,7 @@ export default class PostService {
     }
 
     static async addPost(post) {
-        await axios.post('http://localhost:3001/add-cat', post, {
+        await axios.post('https://shrouded-retreat-68754.herokuapp.com/add-cat', post, {
             headers: {
                 'Content-Type':'application/x-www-form-urlencoded'
             }
@@ -32,7 +32,7 @@ export default class PostService {
     }
 
     static async editPost(postId, post) {
-        await axios.post('http://localhost:3001/edit-cat', {postId, post}, {
+        await axios.post('https://shrouded-retreat-68754.herokuapp.com/edit-cat', {postId, post}, {
             headers: {
                 'Content-Type':'application/json'
             }
