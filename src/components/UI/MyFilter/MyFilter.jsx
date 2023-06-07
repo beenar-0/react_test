@@ -37,24 +37,24 @@ const MyFilter = ({filter, setFilter, currentType, setCurrentType}) => {
                         >All</button></li>
                     <li >
                         <button
-                            className={currentType === "kind" ? [classes.catTypes__item, classes.active].join(' ') : classes.catTypes__item}
+                            className={currentType === "individual" ? [classes.catTypes__item, classes.active].join(' ') : classes.catTypes__item}
                             onClick={()=>{
-                        setCurrentType('kind')
+                        setCurrentType('individual')
                     }}
-                        >Kind</button></li>
+                        >Individual</button></li>
                     <li >
                         <button
-                            className={currentType === "angry" ? [classes.catTypes__item, classes.active].join(' ') : classes.catTypes__item}
+                            className={currentType === "pocket" ? [classes.catTypes__item, classes.active].join(' ') : classes.catTypes__item}
                             onClick={()=>{
-                                setCurrentType('angry')
+                                setCurrentType('pocket')
                             }}
-                        >Angry</button></li><li >
+                        >Pocket</button></li><li >
                     <button
-                        className={currentType === "sad" ? [classes.catTypes__item, classes.active].join(' ') : classes.catTypes__item}
+                        className={currentType === "portable" ? [classes.catTypes__item, classes.active].join(' ') : classes.catTypes__item}
                         onClick={()=>{
-                            setCurrentType('sad')
+                            setCurrentType('portable')
                         }}
-                    >Sad</button></li>
+                    >Portable</button></li>
                 </ul>
             </div>
         </div>

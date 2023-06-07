@@ -2,7 +2,7 @@
     margin: 5px;
     padding: 5px 0 0 11px;
     border-radius: 3px;
-    border: 1px solid #FFA451;
+    border: 1px solid #15449e;
     color: gray;
     background: rgba(255, 164, 81, 0.1);
     width: 100%;
@@ -16,6 +16,6 @@
 
 .myInput:focus {
     outline: 0;
-    border-color: #FFA451;
-    box-shadow: 0 0 0 0.25rem rgba(255,164,81,0.3);
+    border-color: #546ea1;
+    box-shadow: 0 0 0 0.25rem rgba(64, 97, 163, 0.3);
 }

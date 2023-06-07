@@ -19,7 +19,7 @@ const PostList = ({posts, remove, fetchPosts, loading, setEditingPost, setEditAc
                         post={post}
                         key={post._id}/>
                 })
-                : <h1>Cats not found!</h1>
+                : <h1>Dosimeters not found!</h1>
             }
         </div>
     );

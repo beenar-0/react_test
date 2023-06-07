@@ -14,7 +14,7 @@ export default class PostService {
     }
 
     static async deletePost(id) {
-        await axios.post('http://localhost:3001/delete-cat',  {
+        await axios.post('http://localhost:3001/delete-dosimeter',  {
            id
         }, {
             headers: {
@@ -24,7 +24,7 @@ export default class PostService {
     }
 
     static async addPost(post) {
-        await axios.post('http://localhost:3001/add-cat', post, {
+        await axios.post('http://localhost:3001/add-dosimeter', post, {
             headers: {
                 'Content-Type':'application/x-www-form-urlencoded'
             }
@@ -32,7 +32,7 @@ export default class PostService {
     }
 
     static async editPost(postId, post) {
-        await axios.post('http://localhost:3001/edit-cat', {postId, post}, {
+        await axios.post('http://localhost:3001/edit-dosimeter', {postId, post}, {
             headers: {
                 'Content-Type':'application/json'
             }

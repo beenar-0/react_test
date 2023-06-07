@@ -11,7 +11,7 @@ p {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: #F8EADB;
+    background: #bfd2f5;
     border-radius: 0.6em;
 }
 
@@ -24,13 +24,13 @@ p {
 }
 
 .photo {
-    margin-bottom: 10px;
+    margin: 10px 0;
     border-radius: 0.6em 0.6em 0 0;
     min-height: 96px;
     width: 160px;
     background-repeat: no-repeat;
     background-position: center;
-    background-size: cover;
+    background-size: contain;
 }
 
 .title {
@@ -58,7 +58,7 @@ p {
     border-radius: 5px;
     padding: 7px;
     border: none;
-    background: #FFA451;
+    background: #15449e;
     color: white;
     width: 30px;
     height: 30px;

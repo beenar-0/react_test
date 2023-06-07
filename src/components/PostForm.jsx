@@ -13,8 +13,8 @@ const PostForm = ({loading, create, fetchPosts}) => {
     function addNewPost(e) {
         e.preventDefault()
         validationError = []
-        const checkName = new RegExp('^([A-Za-z])+$')
-        const checkDescription = new RegExp('^([A-Za-z\\s0-9.,!?])+$')
+        const checkName = new RegExp('^([A-Za-zА-Яа-я.\\-0-9])+$')
+        const checkDescription = new RegExp('^([A-Za-zА-Яа-я\\s0-9.,!?])+$')
         const checkPrice = new RegExp('^([0-9])+$')
         const checkURL = new RegExp('^https?:\\/\\/.+\\.(jpg|jpeg|png|webp|avif|svg)$')
         if (!checkName.test(post.name)) validationError.push('Incorrect name!')
@@ -84,9 +84,9 @@ const PostForm = ({loading, create, fetchPosts}) => {
             <MySelect
                 value={post.type}
                 options={[
-                    {name: 'Kind', value: 'kind'},
-                    {name: 'Angry', value: 'angry'},
-                    {name: 'Sad', value: 'sad'}
+                    {name: 'Individual', value: 'individual'},
+                    {name: 'Pocket', value: 'pocket'},
+                    {name: 'Portable', value: 'portable'}
                 ]}
                 defaultOption={"Type:"}
                 onChange={(selectedType)=>{
