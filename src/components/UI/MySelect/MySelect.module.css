@@ -1,12 +1,12 @@
 .select {
     font-size: 14px;
-    padding: 5px 0 0 5px;
+    padding: 0 0 0 5px;
     align-self: flex-start;
     margin: 10px 0;
     width: 150px;
     height: 25px;
     color: rgba(0,0,0, 0.6);
-    background: rgba(255, 164, 81, 0.05);
+    background: rgba(191, 210, 245, 0.1);
     border: 1px solid #15449e;
     border-radius: 3px;
 }

@@ -91,7 +91,7 @@ input[type="checkbox"]:checked ~ span:nth-of-type(3){
 
 .counter {
     opacity: 0.8;
-    padding: 1px 0 0 0;
+    padding: 0;
     width: 15px;
     height: 15px;
     position: absolute;

@@ -5,7 +5,7 @@ p {
 .container {
     transition: 1s;
     padding: 0 0 10px 0;
-    margin: 10px;
+    margin: 7px;
     width: 160px;
     height: 250px;
     display: flex;

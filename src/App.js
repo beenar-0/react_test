@@ -28,7 +28,7 @@ function App() {
     }
 
     return (
-        <BrowserRouter basename="/react_test/">
+        <BrowserRouter>
             <div className={isMenuActive || modalActive || isEditActive
                 ? 'App _lock'
                 : 'App'

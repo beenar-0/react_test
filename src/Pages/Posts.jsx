@@ -79,7 +79,7 @@ function Posts({modalActive, setModalActive, isEditActive, setEditActive, setAdd
                     <MyButton onClick={() => {setModalActive(true)}}>Add new card</MyButton>
                 }
             {isPostsLoading
-                ? <Spinner animation="border" variant="warning" style={{width: 100, height: 100, margin: 50}}/>
+                ? <Spinner animation="border" variant="primary" style={{width: 100, height: 100, margin: 50}}/>
                 : error
                     ? <h1>Error: {error}</h1>
                     : <PostList
