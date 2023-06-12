@@ -23,3 +23,4 @@ export default function usePost(posts, sort, query) {
     }, [query, sortedPosts])
     return sortedAndSearchedPosts
 }
+

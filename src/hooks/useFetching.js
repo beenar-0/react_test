@@ -20,3 +20,4 @@ export default function useFetching (callback) {
 
     return [fetching, isLoading, error]
 }
+

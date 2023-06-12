@@ -17,6 +17,7 @@ const MyHeader = ({setBurger, isBurgerChecked, addedPosts}) => {
                     <span></span>
                 </label>
             </div>
+            <div className={classes.atomtexLogo}></div>
             <div className={classes.basket}>
                 <Link className="list__item inCart" to='/cart'></Link>
                 {
