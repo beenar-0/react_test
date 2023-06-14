@@ -2,10 +2,9 @@ const About = () => {
 
     return (
         <div className="about__container">
-            <h2 className="about-title">Developers:</h2>
+            <h2 className="about-title">Developer:</h2>
             <ul className="developer__list">
-                <li className="developer__item">Gleb Malinovskiy</li>
-                <li className="developer__item">Kasperovich Nikita</li>
+                <li className="developer__item">Dubovik Nikita</li>
             </ul>
             <h2 className="about-title">Technology Stack:</h2>
             <ul className="stack__list">
