@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {BrowserRouter, Route, Routes, Link, Navigate} from "react-router-dom"
+import {HashRouter, Route, Routes, Link, Navigate} from "react-router-dom"
 import About from "./Pages/About";
 import Posts from "./Pages/Posts";
 import MyHeader from "./components/UI/MyHeader/MyHeader";
@@ -28,7 +28,7 @@ function App() {
     }
 
     return (
-        <BrowserRouter>
+        <HashRouter>
             <div className={isMenuActive || modalActive || isEditActive
                 ? 'App _lock'
                 : 'App'
@@ -97,7 +97,7 @@ function App() {
                     <Route path="*" element={<Navigate to="/main-page" replace />} />
                 </Routes>
             </div>
-        </BrowserRouter>
+        </HashRouter>
     )
 }
 
