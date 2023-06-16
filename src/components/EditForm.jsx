@@ -12,8 +12,8 @@ const EditForm = ({loading, editingPost, setEditActive, fetchPosts, setEditingPo
     function edit(e) {
         e.preventDefault()
         validationError = []
-        const checkName = new RegExp('^([A-Za-z])+$')
-        const checkDescription = new RegExp('^([A-Za-z\\s0-9.,!?])+$')
+        const checkName = new RegExp('^([A-Za-zА-Яа-я.\\-0-9])+$')
+        const checkDescription = new RegExp('^([A-Za-zА-Яа-я\\s0-9.,!?])+$')
         const checkPrice = new RegExp('^([0-9])+$')
         const checkURL = new RegExp('^https?:\\/\\/.+\\.(jpg|jpeg|png|webp|avif|svg)$')
         if (!checkName.test(editingPost.name)) validationError.push('Incorrect name!')
