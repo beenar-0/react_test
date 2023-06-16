@@ -78,9 +78,9 @@ const EditForm = ({loading, editingPost, setEditActive, fetchPosts, setEditingPo
             <MySelect
                 value={editingPost.type}
                 options={[
-                    {name: 'Kind', value: 'kind'},
-                    {name: 'Angry', value: 'angry'},
-                    {name: 'Sad', value: 'sad'}
+                    {name: 'Individual', value: 'individual'},
+                    {name: 'Pocket', value: 'pocket'},
+                    {name: 'Portable', value: 'portable'}
                 ]}
                 defaultOption={"Type:"}
                 onChange={(selectedType)=>{
