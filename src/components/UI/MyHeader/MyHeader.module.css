@@ -2,11 +2,10 @@
     padding: 0 15px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     background: #15449e;
     width: 100%;
     min-height: 50px;
-    height: 50px;
+    height: 60px;
 }
 
 
@@ -18,15 +17,6 @@
     width: 30px;
     margin:0 0 10px 0;
     padding:0;
-}
-
-.basket {
-    position: relative;
-    cursor: pointer;
-    width: 30px;
-    height: 30px;
-    background: url("../../../assets/icons/cart.svg") center center no-repeat;
-    background-size: cover;
 }
 
 label{
@@ -109,10 +99,83 @@ input[type="checkbox"]:checked ~ span:nth-of-type(3){
 }
 
 .atomtexLogo {
+    margin: 0 10px;
+    order: 1;
+    cursor: pointer;
     height: 40px;
     width: 150px;
     background-image: url("../../../assets/icons/atomtex_logo.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+}
+
+.atomtexLogo a{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.atomtexLogo a:hover {
+    border-bottom: none;
+}
+
+.list {
+    order:2;
+    gap: 50px;
+    padding: 0;
+    margin: 0 70px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.list__item {
+    font-weight: 600;
+    text-decoration: none;
+    list-style: none;
+    font-size: 0.9rem;
+}
+
+.list__item a {
+    text-decoration: none;
+}
+
+.list__item a:hover {
+    color: #FFF;
+    border-bottom: 1px solid #FFF;
+}
+
+.innerContainer{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.cart {
+    position: relative;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    background: url("../../../assets/icons/cart.svg") center center no-repeat;
+    background-size: cover;
+}
+
+.search{
+    order: 3;
+}
+
+@media (max-width: 745px) {
+    .header {
+        height: 50px;
+    }
+    .atomtexLogo {
+        order:2;
+        margin: 0 auto;
+    }
+
+    .list {
+        order: 1;
+    }
 }

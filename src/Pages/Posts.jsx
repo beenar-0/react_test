@@ -10,10 +10,15 @@ import MyFilter from "../components/UI/MyFilter/MyFilter";
 import MyButton from "../components/UI/MyButton/MyButton";
 import PostList from "../components/PostList";
 import PostForm from "../components/PostForm";
+import {useDispatch, useSelector} from "react-redux";
 
 
 
 function Posts({modalActive, setModalActive, isEditActive, setEditActive, setAddedPosts, addedPosts, isAdmin}) {
+
+    const dispatch = useDispatch()
+    const filter = useSelector(state => state.filter)
+
     const [currentType, setCurrentType] = useState("all")
     const [fetchPosts, isPostsLoading, error] = useFetching(async () => {
         setPosts(await PostService.getPosts(currentType))
@@ -22,7 +27,7 @@ function Posts({modalActive, setModalActive, isEditActive, setEditActive, setAdd
         fetchPosts(currentType)
     }, [currentType])
     const [posts, setPosts] = useState([])
-    const [filter, setFilter] = useState({sort: '', query: ''})
+    const [filterr, setFilter] = useState({sort: '', query: ''})
     const sortedAndSearchedPosts = usePost(posts, filter.sort, filter.query)
     const [editingPost, setEditingPost] = useState({name: "", description: "", price: "", img: "", type: ""})
 
@@ -67,13 +72,17 @@ function Posts({modalActive, setModalActive, isEditActive, setEditActive, setAdd
                     editingPost={editingPost}
                 />
             </MyModal>
-            <MyFilter
-                fetchPosts={fetchPosts}
-                setCurrentType={setCurrentType}
-                currentType={currentType}
-                filter={filter}
-                setFilter={setFilter}
-            />
+                {
+                    window.matchMedia("(max-width: 745px)").matches
+                    && <MyFilter
+                        fetchPosts={fetchPosts}
+                        setCurrentType={setCurrentType}
+                        currentType={currentType}
+                        filterr={filterr}
+                        setFilter={setFilter}
+                    />
+                }
+
                 {
                     isAdmin &&
                     <MyButton onClick={() => {setModalActive(true)}}>Add new card</MyButton>

@@ -1,23 +1,27 @@
-import MyInput from "../MyInput/MyInput";
 import MySelect from "../MySelect/MySelect";
 import classes from "./MyFilter.module.css";
+import MyInput from "../MyInput/MyInput";
+import {useDispatch, useSelector} from "react-redux";
 
-const MyFilter = ({filter, setFilter, currentType, setCurrentType}) => {
+const MyFilter = ({currentType, setCurrentType}) => {
+
+        const dispatch = useDispatch()
+        const filter = useSelector(state => state.filter)
+
         return (
         <div className={classes.myFilter__container}>
-
             <MyInput
                 type="text"
-                placeholder="Search..."
-                value={filter.query}
+                placeholder="Search"
                 onChange={(e) => {
-                    return setFilter({...filter, query: e.target.value})
+                    return dispatch({type:"SET_QUERY", payload: e.target.value})
                 }}
             />
             <MySelect
                 value={filter.sort}
                 onChange={(selectedSort)=>{
-                    return setFilter({...filter, sort:selectedSort})
+                    return dispatch({type:"SET_SORT", payload: selectedSort})
+                    // return setFilter({...filterr, sort:selectedSort})
                 }}
                 options={[
                     {name: 'Name', value: 'name'},
