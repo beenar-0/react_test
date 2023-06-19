@@ -17,35 +17,33 @@ import {useDispatch, useSelector} from "react-redux";
 function Posts({modalActive, setModalActive, isEditActive, setEditActive, setAddedPosts, addedPosts, isAdmin}) {
 
     const dispatch = useDispatch()
-    const filter = useSelector(state => state.filter)
-
-    const [currentType, setCurrentType] = useState("all")
+    const currentType = useSelector(state => state.type.type)
+    const posts = useSelector(state => state.posts.posts)
     const [fetchPosts, isPostsLoading, error] = useFetching(async () => {
-        setPosts(await PostService.getPosts(currentType))
+        dispatch({type:"SET_POSTS", payload:await PostService.getPosts(currentType)})
     })
     useEffect(()=>{
         fetchPosts(currentType)
     }, [currentType])
-    const [posts, setPosts] = useState([])
-    const [filterr, setFilter] = useState({sort: '', query: ''})
-    const sortedAndSearchedPosts = usePost(posts, filter.sort, filter.query)
+    // const [posts, setPosts] = useState([])
+    // const sortedAndSearchedPosts = usePost(posts, filter.sort, filter.query)
     const [editingPost, setEditingPost] = useState({name: "", description: "", price: "", img: "", type: ""})
 
 
     useEffect(() => {
         if (isAdmin) setAddedPosts([])
-        fetchPosts()
+        fetchPosts(currentType)
     }, [])
 
     function createPost(newPost) {
-        setPosts([...posts, newPost])
+        dispatch({type:"SET_POSTS", payload:[...posts, newPost]})
         setModalActive(false)
     }
 
     function removePost(post) {
-        setPosts(posts.filter((p) => {
+        dispatch({type:"SET_POSTS", payload:posts.filter((p) => {
             return p._id !== post._id
-        }))
+        })})
     }
 
     return (
@@ -76,10 +74,6 @@ function Posts({modalActive, setModalActive, isEditActive, setEditActive, setAdd
                     window.matchMedia("(max-width: 745px)").matches
                     && <MyFilter
                         fetchPosts={fetchPosts}
-                        setCurrentType={setCurrentType}
-                        currentType={currentType}
-                        filterr={filterr}
-                        setFilter={setFilter}
                     />
                 }
 
@@ -100,7 +94,7 @@ function Posts({modalActive, setModalActive, isEditActive, setEditActive, setAdd
                         setEditingPost={setEditingPost}
                         loading={isPostsLoading}
                         fetchPosts={fetchPosts}
-                        posts={sortedAndSearchedPosts}
+                        // posts={sortedAndSearchedPosts}
                         remove={removePost}
                     />
             }

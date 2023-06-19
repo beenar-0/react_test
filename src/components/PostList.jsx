@@ -1,11 +1,17 @@
 import MyCard from "./UI/MyCard/MyCard";
+import usePost from "../hooks/usePost";
+import {useSelector} from "react-redux";
 
-const PostList = ({posts, remove, fetchPosts, loading, setEditingPost, setEditActive, isAdmin, setAddedPosts, addedPosts, currentType}) => {
+const PostList = ({remove, fetchPosts, loading, setEditingPost, setEditActive, isAdmin, setAddedPosts, addedPosts, currentType}) => {
+
+    const posts = useSelector(state => state.posts.posts)
+    const filter = useSelector(state => state.filter)
+    const sortedAndSearchedPosts = usePost(posts, filter.sort, filter.query)
 
     return (
         <div className="postList">
-            {posts.length
-                ? posts.map((post) => {
+            {sortedAndSearchedPosts.length
+                ? sortedAndSearchedPosts.map((post) => {
                     return <MyCard
                         currentType={currentType}
                         addedPosts={addedPosts}

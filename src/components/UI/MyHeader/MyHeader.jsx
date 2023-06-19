@@ -2,9 +2,9 @@ import React, {useState} from 'react';
 import classes from "./MyHeader.module.css";
 import {Link} from "react-router-dom";
 import MySearch from "../MySearch/MySearch";
+import {useDispatch, useSelector} from "react-redux";
 
 const MyHeader = ({setBurger, isBurgerChecked, addedPosts}) => {
-
 
     return (
         <header className={classes.header}>

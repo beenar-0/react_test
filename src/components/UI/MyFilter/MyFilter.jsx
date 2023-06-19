@@ -3,10 +3,11 @@ import classes from "./MyFilter.module.css";
 import MyInput from "../MyInput/MyInput";
 import {useDispatch, useSelector} from "react-redux";
 
-const MyFilter = ({currentType, setCurrentType}) => {
+const MyFilter = () => {
 
-        const dispatch = useDispatch()
-        const filter = useSelector(state => state.filter)
+    const dispatch = useDispatch()
+    const filter = useSelector(state => state.filter)
+    const currentType = useSelector(state => state.type)
 
         return (
         <div className={classes.myFilter__container}>
@@ -21,7 +22,6 @@ const MyFilter = ({currentType, setCurrentType}) => {
                 value={filter.sort}
                 onChange={(selectedSort)=>{
                     return dispatch({type:"SET_SORT", payload: selectedSort})
-                    // return setFilter({...filterr, sort:selectedSort})
                 }}
                 options={[
                     {name: 'Name', value: 'name'},
@@ -36,27 +36,27 @@ const MyFilter = ({currentType, setCurrentType}) => {
                         <button
                             className={currentType === "all" ? [classes.catTypes__item, classes.active].join(' ') : classes.catTypes__item}
                             onClick={()=>{
-                                setCurrentType('all')
+                                dispatch({type:"SET_TYPE", payload:'all'})
                             }}
                         >All</button></li>
                     <li >
                         <button
                             className={currentType === "individual" ? [classes.catTypes__item, classes.active].join(' ') : classes.catTypes__item}
                             onClick={()=>{
-                        setCurrentType('individual')
+                                dispatch({type:"SET_TYPE", payload:'individual'})
                     }}
                         >Individual</button></li>
                     <li >
                         <button
                             className={currentType === "pocket" ? [classes.catTypes__item, classes.active].join(' ') : classes.catTypes__item}
                             onClick={()=>{
-                                setCurrentType('pocket')
+                                dispatch({type:"SET_TYPE", payload:'pocket'})
                             }}
                         >Pocket</button></li><li >
                     <button
                         className={currentType === "portable" ? [classes.catTypes__item, classes.active].join(' ') : classes.catTypes__item}
                         onClick={()=>{
-                            setCurrentType('portable')
+                            dispatch({type:"SET_TYPE", payload:'portable'})
                         }}
                     >Portable</button></li>
                 </ul>
