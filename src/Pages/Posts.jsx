@@ -10,6 +10,7 @@ import MyButton from "../components/UI/MyButton/MyButton";
 import PostList from "../components/PostList";
 import PostForm from "../components/PostForm";
 import {useDispatch, useSelector} from "react-redux";
+import MyFilterPc from "../components/UI/MyFilterPC/MyFilterPC";
 
 
 function Posts({setAddedPosts, addedPosts, isAdmin}) {
@@ -19,14 +20,14 @@ function Posts({setAddedPosts, addedPosts, isAdmin}) {
     const isModalActive = useSelector(state => state.modal.isModalActive)
     const currentType = useSelector(state => state.type.type)
     const posts = useSelector(state => state.posts.posts)
-    const [fetchPosts, isPostsLoading, error] = useFetching(async () => {
+    const [fetchPosts, isPostsLoading, error, setError] = useFetching(async () => {
+        setError(null)
         dispatch({type: "SET_POSTS", payload: await PostService.getPosts(currentType)})
     })
     useEffect(() => {
         fetchPosts(currentType)
     }, [currentType])
     const [editingPost, setEditingPost] = useState({name: "", description: "", price: "", img: "", type: ""})
-
 
     useEffect(() => {
         if (isAdmin) setAddedPosts([])
@@ -64,34 +65,39 @@ function Posts({setAddedPosts, addedPosts, isAdmin}) {
                     editingPost={editingPost}
                 />
             </MyModal>
-            {
-                window.matchMedia("(max-width: 745px)").matches
-                && <MyFilter
-                    fetchPosts={fetchPosts}
-                />
-            }
+            <div className={'mainContainer'}>
+                <div className={'leftContainer'}>
+                    {
+                        window.matchMedia("(max-width: 745px)").matches
+                            ? <MyFilter fetchPosts={fetchPosts}/>
+                            : <MyFilterPc/>
+                    }
+                </div>
+                <div className={'rightContainer'}>
+                    {
+                        isAdmin &&
+                        <MyButton onClick={() => {
+                            dispatch({type: "SET_MODAL", payload: true})
+                        }}>Add new card</MyButton>
+                    }
+                    {isPostsLoading
+                        ? <Spinner animation="border" variant="primary" style={{width: 100, height: 100, margin: 50}}/>
+                        : error
+                            ? <h1>Error: {error}</h1>
+                            : <PostList
+                                currentType={currentType}
+                                addedPosts={addedPosts}
+                                setAddedPosts={setAddedPosts}
+                                isAdmin={isAdmin}
+                                setEditingPost={setEditingPost}
+                                loading={isPostsLoading}
+                                fetchPosts={fetchPosts}
+                                remove={removePost}
+                            />
+                    }
+                </div>
 
-            {
-                isAdmin &&
-                <MyButton onClick={() => {
-                    dispatch({type: "SET_MODAL", payload: true})
-                }}>Add new card</MyButton>
-            }
-            {isPostsLoading
-                ? <Spinner animation="border" variant="primary" style={{width: 100, height: 100, margin: 50}}/>
-                : error
-                    ? <h1>Error: {error}</h1>
-                    : <PostList
-                        currentType={currentType}
-                        addedPosts={addedPosts}
-                        setAddedPosts={setAddedPosts}
-                        isAdmin={isAdmin}
-                        setEditingPost={setEditingPost}
-                        loading={isPostsLoading}
-                        fetchPosts={fetchPosts}
-                        remove={removePost}
-                    />
-            }
+            </div>
         </div>
     );
 }

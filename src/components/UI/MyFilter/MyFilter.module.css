@@ -7,13 +7,13 @@
     width: 100%;
 }
 
-.catTypes__container {
+.dosTypes__container {
     width: 100%;
     display: flex;
     align-items: center;
 }
 
-.catTypes__list {
+.dosTypes__list {
     justify-content: center;
     margin: 10px 0 0 0;
     align-items: center;
@@ -25,13 +25,13 @@
     list-style: none;
 }
 
-.catTypes__item{
+.dosTypes__item{
     border: none;
     background: none;
     font-weight: 700;
     cursor: pointer;
 }
-.catTypes__item:hover{
+.dosTypes__item:hover{
     color: #15449e;
 }
 

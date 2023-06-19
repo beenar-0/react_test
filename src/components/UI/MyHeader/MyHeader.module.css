@@ -132,6 +132,7 @@ input[type="checkbox"]:checked ~ span:nth-of-type(3){
 }
 
 .list__item {
+    min-width: fit-content;
     font-weight: 600;
     text-decoration: none;
     list-style: none;

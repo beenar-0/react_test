@@ -30,31 +30,31 @@ const MyFilter = () => {
                 defaultOption={"Sort by:"}
             />
 
-            <div className={classes.catTypes__container}>
-                <ul className={classes.catTypes__list}>
+            <div className={classes.dosTypes__container}>
+                <ul className={classes.dosTypes__list}>
                     <li >
                         <button
-                            className={currentType === "all" ? [classes.catTypes__item, classes.active].join(' ') : classes.catTypes__item}
+                            className={currentType === "all" ? [classes.dosTypes__item, classes.active].join(' ') : classes.dosTypes__item}
                             onClick={()=>{
                                 dispatch({type:"SET_TYPE", payload:'all'})
                             }}
                         >All</button></li>
                     <li >
                         <button
-                            className={currentType === "individual" ? [classes.catTypes__item, classes.active].join(' ') : classes.catTypes__item}
+                            className={currentType === "individual" ? [classes.dosTypes__item, classes.active].join(' ') : classes.dosTypes__item}
                             onClick={()=>{
                                 dispatch({type:"SET_TYPE", payload:'individual'})
                     }}
                         >Individual</button></li>
                     <li >
                         <button
-                            className={currentType === "pocket" ? [classes.catTypes__item, classes.active].join(' ') : classes.catTypes__item}
+                            className={currentType === "pocket" ? [classes.dosTypes__item, classes.active].join(' ') : classes.dosTypes__item}
                             onClick={()=>{
                                 dispatch({type:"SET_TYPE", payload:'pocket'})
                             }}
                         >Pocket</button></li><li >
                     <button
-                        className={currentType === "portable" ? [classes.catTypes__item, classes.active].join(' ') : classes.catTypes__item}
+                        className={currentType === "portable" ? [classes.dosTypes__item, classes.active].join(' ') : classes.dosTypes__item}
                         onClick={()=>{
                             dispatch({type:"SET_TYPE", payload:'portable'})
                         }}

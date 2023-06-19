@@ -1,5 +1,5 @@
 const defaultState = {
-    sort:'',
+    sort:'price',
     query:''
 }
 
