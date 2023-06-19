@@ -2,7 +2,7 @@ import MyCard from "./UI/MyCard/MyCard";
 import usePost from "../hooks/usePost";
 import {useSelector} from "react-redux";
 
-const PostList = ({remove, fetchPosts, loading, setEditingPost, setEditActive, isAdmin, setAddedPosts, addedPosts, currentType}) => {
+const PostList = ({remove, fetchPosts, loading, setEditingPost, isAdmin, setAddedPosts, addedPosts, currentType}) => {
 
     const posts = useSelector(state => state.posts.posts)
     const filter = useSelector(state => state.filter)
@@ -17,7 +17,6 @@ const PostList = ({remove, fetchPosts, loading, setEditingPost, setEditActive, i
                         addedPosts={addedPosts}
                         setAddedPosts={setAddedPosts}
                         isAdmin={isAdmin}
-                        setEditActive={setEditActive}
                         setEditingPost={setEditingPost}
                         loading={loading}
                         fetchPosts={fetchPosts}

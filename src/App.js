@@ -5,12 +5,13 @@ import Posts from "./Pages/Posts";
 import MyHeader from "./components/UI/MyHeader/MyHeader";
 import Admin from "./Pages/Admin";
 import Cart from "./Pages/Cart";
+import {useSelector} from "react-redux";
 
 
 function App() {
 
     const [modalActive, setModalActive] = useState(false)
-    const [isEditActive, setEditActive] = useState(false)
+    const isEditActive = useSelector(state => state.edit.isEditActive)
     const [isMenuActive, setIsMenuActive] = useState(false)
     const [isBurgerChecked, setBurgerChecked] = useState(false)
     const [addedPosts, setAddedPosts] = useState([])
@@ -69,8 +70,6 @@ function App() {
                             addedPosts={addedPosts}
                             modalActive={modalActive}
                             setModalActive={setModalActive}
-                            isEditActive={isEditActive}
-                            setEditActive={setEditActive}
                             isMenuActive={isMenuActive}
                             setIsMenuActive={setIsMenuActive}
                         />
@@ -87,8 +86,6 @@ function App() {
                             addedPosts={addedPosts}
                             modalActive={modalActive}
                             setModalActive={setModalActive}
-                            isEditActive={isEditActive}
-                            setEditActive={setEditActive}
                             isMenuActive={isMenuActive}
                             setIsMenuActive={setIsMenuActive}
                         />

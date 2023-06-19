@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import classes from "./MyCard.module.css"
 import PostService from "../../../API/PostService";
+import {useDispatch} from "react-redux";
 
-const MyCard = ({post, remove, loading, fetchPosts, setEditingPost, setEditActive, isAdmin, setAddedPosts, addedPosts, currentType}) => {
+const MyCard = ({post, remove, loading, fetchPosts, setEditingPost, isAdmin, setAddedPosts, addedPosts, currentType}) => {
 
     function deleteCat() {
         PostService.deletePost(post._id)
@@ -17,7 +18,7 @@ const MyCard = ({post, remove, loading, fetchPosts, setEditingPost, setEditActiv
                 fetchPosts(currentType)
             })
     }
-
+    const dispatch = useDispatch()
     const [isAdded, setIsAdded] = useState(false)
     const notAddedClasses = [classes.button, classes.cart__btn]
     const addedClasses = [classes.button, classes.cart__btn, classes.cart__added]
@@ -44,7 +45,7 @@ const MyCard = ({post, remove, loading, fetchPosts, setEditingPost, setEditActiv
                             <button
                                 className={classes.button}
                                 onClick={() => {
-                                    setEditActive(true)
+                                    dispatch({type:"SET_EDIT", payload: true})
                                     setEditingPost(post)
                                 }}
                             >

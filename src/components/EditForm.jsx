@@ -3,9 +3,10 @@ import MyButton from "./UI/MyButton/MyButton";
 import MySelect from "./UI/MySelect/MySelect";
 import PostService from "../API/PostService";
 import React, {useState} from "react";
+import {useDispatch} from "react-redux";
 
-const EditForm = ({loading, editingPost, setEditActive, fetchPosts, setEditingPost}) => {
-
+const EditForm = ({loading, editingPost, fetchPosts, setEditingPost}) => {
+    const dispatch = useDispatch()
     const [error, setError] = useState([])
     let validationError = []
 
@@ -25,7 +26,7 @@ const EditForm = ({loading, editingPost, setEditActive, fetchPosts, setEditingPo
         loading = true
         PostService.editPost(editingPost._id, editingPost)
             .then(()=>{
-                setEditActive(false)
+                dispatch({type:"SET_EDIT", payload: false})
             })
             .catch((error)=>{
                 console.log(error)
