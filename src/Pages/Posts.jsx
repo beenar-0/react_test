@@ -15,6 +15,8 @@ import {useDispatch, useSelector} from "react-redux";
 function Posts({setAddedPosts, addedPosts, isAdmin}) {
 
     const dispatch = useDispatch()
+    const isEditActive = useSelector(state => state.edit.isEditActive)
+    const isModalActive = useSelector(state => state.modal.isModalActive)
     const currentType = useSelector(state => state.type.type)
     const posts = useSelector(state => state.posts.posts)
     const [fetchPosts, isPostsLoading, error] = useFetching(async () => {
@@ -47,14 +49,14 @@ function Posts({setAddedPosts, addedPosts, isAdmin}) {
 
     return (
         <div className="app-container">
-            <MyModal>
+            <MyModal active={isModalActive}>
                 <PostForm
                     loading={isPostsLoading}
                     fetchPosts={fetchPosts}
                     create={createPost}
                 />
             </MyModal>
-            <MyModal>
+            <MyModal active={isEditActive}>
                 <EditForm
                     setEditingPost={setEditingPost}
                     loading={isPostsLoading}

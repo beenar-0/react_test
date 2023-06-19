@@ -23,20 +23,20 @@ const EditForm = ({loading, editingPost, fetchPosts, setEditingPost}) => {
         if (!checkURL.test(editingPost.img)) validationError.push('Incorrect image link!')
         if (editingPost.type === '') validationError.push('Chose type!')
         if (validationError.length === 0) {
-        loading = true
-        PostService.editPost(editingPost._id, editingPost)
-            .then(()=>{
-                dispatch({type:"SET_EDIT", payload: false})
-            })
-            .catch((error)=>{
-                console.log(error)
-            })
-            .finally(()=>{
-                loading = false
-                fetchPosts()
-                setEditingPost({name: "", description: "", price:"", img:"", type:""})
-            })
-            } else setError(validationError)
+            loading = true
+            PostService.editPost(editingPost._id, editingPost)
+                .then(() => {
+                    dispatch({type: "SET_EDIT", payload: false})
+                })
+                .catch((error) => {
+                    console.log(error)
+                })
+                .finally(() => {
+                    loading = false
+                    fetchPosts()
+                    setEditingPost({name: "", description: "", price: "", img: "", type: ""})
+                })
+        } else setError(validationError)
     }
 
     return (
@@ -84,11 +84,11 @@ const EditForm = ({loading, editingPost, fetchPosts, setEditingPost}) => {
                     {name: 'Portable', value: 'portable'}
                 ]}
                 defaultOption={"Type:"}
-                onChange={(selectedType)=>{
-                    return setEditingPost({...editingPost, type:selectedType})
+                onChange={(selectedType) => {
+                    return setEditingPost({...editingPost, type: selectedType})
                 }}
             />
-            {error.length > 0 && <div>{error.map((err)=>{
+            {error.length > 0 && <div>{error.map((err) => {
                 return <div key={err} className="error">{err}</div>
             })}</div>}
             <MyButton onClick={edit}>Save</MyButton>

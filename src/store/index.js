@@ -5,6 +5,7 @@ import {postsReducer} from "./postsReducer";
 import {isEditReducer} from "./editReducer";
 import {isModalReducer} from "./isModalActiveReducer";
 
+
 const rootReducer = combineReducers({
     filter: filterReducer,
     type: typeReducer,

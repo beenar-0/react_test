@@ -10,7 +10,7 @@ import {useSelector} from "react-redux";
 
 function App() {
 
-    const [modalActive, setModalActive] = useState(false)
+    const isModalActive = useSelector(state => state.modal.isEditActive)
     const isEditActive = useSelector(state => state.edit.isEditActive)
     const [isMenuActive, setIsMenuActive] = useState(false)
     const [isBurgerChecked, setBurgerChecked] = useState(false)
@@ -30,7 +30,7 @@ function App() {
 
     return (
         <BrowserRouter>
-            <div className={isMenuActive || modalActive || isEditActive
+            <div className={isMenuActive || isModalActive || isEditActive
                 ? 'App _lock'
                 : 'App'
             }>
@@ -68,8 +68,6 @@ function App() {
                             isAdmin={false}
                             setAddedPosts={setAddedPosts}
                             addedPosts={addedPosts}
-                            modalActive={modalActive}
-                            setModalActive={setModalActive}
                             isMenuActive={isMenuActive}
                             setIsMenuActive={setIsMenuActive}
                         />
@@ -84,8 +82,6 @@ function App() {
                             isAdmin={true}
                             setAddedPosts={setAddedPosts}
                             addedPosts={addedPosts}
-                            modalActive={modalActive}
-                            setModalActive={setModalActive}
                             isMenuActive={isMenuActive}
                             setIsMenuActive={setIsMenuActive}
                         />

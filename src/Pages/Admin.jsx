@@ -7,8 +7,6 @@ const Admin = ({isAdmin, setAddedPosts, addedPosts, modalActive, setModalActive,
             isAdmin={isAdmin}
             setAddedPosts={setAddedPosts}
             addedPosts={addedPosts}
-            modalActive={modalActive}
-            setModalActive={setModalActive}
             isMenuActive={isMenuActive}
             setIsMenuActive={setIsMenuActive}
         />
