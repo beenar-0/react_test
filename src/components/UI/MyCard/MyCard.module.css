@@ -41,6 +41,8 @@ p {
 }
 
 .description {
+    height: 40px;
+    overflow: auto;
     word-break: normal;
     white-space: normal;
     font-size: 0.8em;

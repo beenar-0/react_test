@@ -13,8 +13,8 @@ const EditForm = ({loading, editingPost, fetchPosts, setEditingPost}) => {
     function edit(e) {
         e.preventDefault()
         validationError = []
-        const checkName = new RegExp('^([A-Za-zА-Яа-я.\\-0-9])+$')
-        const checkDescription = new RegExp('^([A-Za-zА-Яа-я\\s0-9.,!?])+$')
+        const checkName = new RegExp('^([A-Za-zА-Яа-я.\\-0-9\s])+$')
+        const checkDescription = new RegExp('^([A-Za-zА-Яа-я\\s0-9.,!?\\-])+$')
         const checkPrice = new RegExp('^([0-9])+$')
         const checkURL = new RegExp('^https?:\\/\\/.+\\.(jpg|jpeg|png|webp|avif|svg)$')
         if (!checkName.test(editingPost.name)) validationError.push('Incorrect name!')
@@ -34,7 +34,16 @@ const EditForm = ({loading, editingPost, fetchPosts, setEditingPost}) => {
                 .finally(() => {
                     loading = false
                     fetchPosts()
-                    setEditingPost({name: "", description: "", price: "", img: "", type: ""})
+                    setEditingPost({
+                        name: "",
+                        description: "",
+                        price: "",
+                        img: "",
+                        type: "",
+                        measurementRange: "",
+                        energyRange: "",
+                        protectionClass: ""
+                    })
                 })
         } else setError(validationError)
     }
@@ -51,7 +60,7 @@ const EditForm = ({loading, editingPost, fetchPosts, setEditingPost}) => {
                 placeholder="Name"
             />
             <MyInput
-                maxLength={35}
+                maxLength={300}
                 value={editingPost.description}
                 onChange={(e) => {
                     return setEditingPost({...editingPost, description: e.target.value})
@@ -61,12 +70,36 @@ const EditForm = ({loading, editingPost, fetchPosts, setEditingPost}) => {
             />
             <MyInput
                 type="number"
-                maxLength={4}
+                maxLength={7}
                 value={editingPost.price}
                 onChange={(e) => {
                     return setEditingPost({...editingPost, price: e.target.value})
                 }}
                 placeholder="Price"
+            />
+            <MyInput
+                value={editingPost.measurementRange}
+                onChange={(e) => {
+                    return setEditingPost({...editingPost, measurementRange: e.target.value})
+                }}
+                type="text"
+                placeholder="Measurement range"
+            />
+            <MyInput
+                value={editingPost.energyRange}
+                onChange={(e) => {
+                    return setEditingPost({...editingPost, energyRange: e.target.value})
+                }}
+                type="text"
+                placeholder="Energy range"
+            />
+            <MyInput
+                value={editingPost.protectionClass}
+                onChange={(e) => {
+                    return setEditingPost({...editingPost, protectionClass: e.target.value})
+                }}
+                type="text"
+                placeholder="Protection class"
             />
             <MyInput
                 value={editingPost.img}
@@ -81,11 +114,14 @@ const EditForm = ({loading, editingPost, fetchPosts, setEditingPost}) => {
                 options={[
                     {name: 'Individual', value: 'individual'},
                     {name: 'Pocket', value: 'pocket'},
-                    {name: 'Portable', value: 'portable'}
+                    {name: 'Portable', value: 'portable'},
+                    {name: 'Wide-range', value: 'wideRange'},
+                    {name: 'Standard', value: 'standard'},
+                    {name: 'Neutron', value: 'neutron'}
                 ]}
                 defaultOption={"Type:"}
-                onChange={(selectedType) => {
-                    return setEditingPost({...editingPost, type: selectedType})
+                onChange={(selectedType)=>{
+                    return setEditingPost({...editingPost, type:selectedType})
                 }}
             />
             {error.length > 0 && <div>{error.map((err) => {

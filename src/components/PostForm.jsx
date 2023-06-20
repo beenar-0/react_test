@@ -13,8 +13,8 @@ const PostForm = ({loading, create, fetchPosts}) => {
     function addNewPost(e) {
         e.preventDefault()
         validationError = []
-        const checkName = new RegExp('^([A-Za-zА-Яа-я.\\-0-9])+$')
-        const checkDescription = new RegExp('^([A-Za-zА-Яа-я\\s0-9.,!?])+$')
+        const checkName = new RegExp('^([A-Za-zА-Яа-я.\\-0-9\s])+$')
+        const checkDescription = new RegExp('^([A-Za-zА-Яа-я\\s0-9.,!?\\-])+$')
         const checkPrice = new RegExp('^([0-9])+$')
         const checkURL = new RegExp('^https?:\\/\\/.+\\.(jpg|jpeg|png|webp|avif|svg)$')
         if (!checkName.test(post.name)) validationError.push('Incorrect name!')
@@ -37,7 +37,16 @@ const PostForm = ({loading, create, fetchPosts}) => {
                 .finally(()=>{
                     loading = false
                     fetchPosts()
-                    setPost({name: "", description: "", price:"", img:"", type:""})
+                    setPost({
+                        name: "",
+                        description: "",
+                        price:"",
+                        img:"",
+                        type:"",
+                        measurementRange:"",
+                        energyRange:"",
+                        protectionClass:""
+                    })
                 })
         } else setError(validationError)
 
@@ -56,7 +65,7 @@ const PostForm = ({loading, create, fetchPosts}) => {
                 placeholder="Name"
             />
             <MyInput
-                maxLength={30}
+                maxLength={300}
                 value={post.description}
                 onChange={(e) => {
                     return setPost({...post, description: e.target.value})
@@ -66,12 +75,36 @@ const PostForm = ({loading, create, fetchPosts}) => {
             />
             <MyInput
                 type="number"
-                maxLength={4}
+                maxLength={7}
                 value={post.price}
                 onChange={(e) => {
                     return setPost({...post, price: e.target.value})
                 }}
                 placeholder="Price"
+            />
+            <MyInput
+                value={post.measurementRange}
+                onChange={(e) => {
+                    return setPost({...post, measurementRange: e.target.value})
+                }}
+                type="text"
+                placeholder="Measurement range"
+            />
+            <MyInput
+                value={post.energyRange}
+                onChange={(e) => {
+                    return setPost({...post, energyRange: e.target.value})
+                }}
+                type="text"
+                placeholder="Energy range"
+            />
+            <MyInput
+                value={post.protectionClass}
+                onChange={(e) => {
+                    return setPost({...post, protectionClass: e.target.value})
+                }}
+                type="text"
+                placeholder="Protection class"
             />
             <MyInput
                 value={post.img}
@@ -86,7 +119,10 @@ const PostForm = ({loading, create, fetchPosts}) => {
                 options={[
                     {name: 'Individual', value: 'individual'},
                     {name: 'Pocket', value: 'pocket'},
-                    {name: 'Portable', value: 'portable'}
+                    {name: 'Portable', value: 'portable'},
+                    {name: 'Wide-range', value: 'wideRange'},
+                    {name: 'Standard', value: 'standard'},
+                    {name: 'Neutron', value: 'neutron'}
                 ]}
                 defaultOption={"Type:"}
                 onChange={(selectedType)=>{
