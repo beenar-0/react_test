@@ -10,7 +10,7 @@ const MyHeader = ({setBurger, isBurgerChecked, addedPosts}) => {
         <header className={classes.header}>
             <div className={classes.innerContainer}>
                 {
-                    window.matchMedia("(max-width: 745px)").matches
+                    window.matchMedia("(max-width: 1150px)").matches
                         ?   <div className={classes.container}>
                             <label htmlFor="check">
                                 <input checked={isBurgerChecked} type="checkbox" id="check" onChange={setBurger}/>
@@ -28,7 +28,7 @@ const MyHeader = ({setBurger, isBurgerChecked, addedPosts}) => {
                 }
                 <div className={classes.atomtexLogo}><Link to={'/main-page'}></Link></div>
                 {
-                    window.matchMedia("(min-width: 745px)").matches
+                    window.matchMedia("(min-width: 1150px)").matches
                     && <MySearch
                         type="text"
                         placeholder="Search"

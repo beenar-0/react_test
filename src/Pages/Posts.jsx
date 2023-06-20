@@ -68,7 +68,7 @@ function Posts({setAddedPosts, addedPosts, isAdmin}) {
             <div className={'mainContainer'}>
                 <div className={'leftContainer'}>
                     {
-                        window.matchMedia("(max-width: 745px)").matches
+                        window.matchMedia("(max-width: 1150px)").matches
                             ? <MyFilter fetchPosts={fetchPosts}/>
                             : <MyFilterPc/>
                     }

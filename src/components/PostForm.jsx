@@ -65,7 +65,7 @@ const PostForm = ({loading, create, fetchPosts}) => {
                 placeholder="Name"
             />
             <MyInput
-                maxLength={300}
+                maxLength={100}
                 value={post.description}
                 onChange={(e) => {
                     return setPost({...post, description: e.target.value})

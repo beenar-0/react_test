@@ -33,12 +33,31 @@ const MyCard = ({post, remove, loading, fetchPosts, setEditingPost, isAdmin, set
             <div className={classes.photo} style={{backgroundImage: `url("${post.img}")`}}></div>
             <div className={classes.content__container}>
                 <div className={classes.title}>{post.name}</div>
-                <p className={classes.description}>{post.description}</p>
+                <div className={classes.description}>{post.description}</div>
+                <div className={classes.paramContainer}>
+                    <div className={classes.parameter}>Measurement range:</div>
+                    <div className={classes.dots}></div>
+                    <div className={classes.value}>{post.measurementRange}</div>
+                </div>
+                <div className={classes.paramContainer}>
+                    <div className={classes.parameter}>Energy range:</div>
+                    <div className={classes.dots}></div>
+                    <div className={classes.value}>{post.energyRange}</div>
+                </div><div className={classes.paramContainer}>
+                <div className={classes.parameter}>Protection class:</div>
+                <div className={classes.dots}></div>
+                <div className={classes.value}>{post.protectionClass}</div>
+            </div><div className={classes.paramContainer}>
+                <div className={classes.parameter}>Type:</div>
+                <div className={classes.dots}></div>
+                <div className={classes.value}>{post.type}</div>
+            </div>
                 <p className={classes.price}>{post.price}$</p>
+            </div>
                 {
                     isAdmin
                         ?
-                        <div className={classes.button__container}>
+                        <div className={[classes.button__container, classes.center].join(' ')}>
                             <button className={classes.button} onClick={deleteCat}>
                                 <div className={classes.delete__icon}></div>
                             </button>
@@ -53,22 +72,21 @@ const MyCard = ({post, remove, loading, fetchPosts, setEditingPost, isAdmin, set
                             </button>
                         </div>
                         :
-                            <div className={classes.button__container}>
-                                <button
-                                    className={isAdded ? addedClasses.join(' ') : notAddedClasses.join(' ')}
-                                    onClick={()=>{
-                                        setIsAdded(!isAdded)
-                                        isAdded
-                                            ? setAddedPosts(addedPosts.filter((p)=>{
-                                                return post._id !== p._id
-                                            }))
-                                            : setAddedPosts([...addedPosts, post])
-                                    }}>
-                                    <div className={classes.cart__icon}></div>
-                                </button>
-                            </div>
+                        <div className={classes.button__container}>
+                            <button
+                                className={isAdded ? addedClasses.join(' ') : notAddedClasses.join(' ')}
+                                onClick={()=>{
+                                    setIsAdded(!isAdded)
+                                    isAdded
+                                        ? setAddedPosts(addedPosts.filter((p)=>{
+                                            return post._id !== p._id
+                                        }))
+                                        : setAddedPosts([...addedPosts, post])
+                                }}>
+                                <div className={classes.cart__icon}></div>
+                            </button>
+                        </div>
                 }
-            </div>
         </div>
     );
 };

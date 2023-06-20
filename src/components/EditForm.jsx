@@ -60,7 +60,7 @@ const EditForm = ({loading, editingPost, fetchPosts, setEditingPost}) => {
                 placeholder="Name"
             />
             <MyInput
-                maxLength={300}
+                maxLength={100}
                 value={editingPost.description}
                 onChange={(e) => {
                     return setEditingPost({...editingPost, description: e.target.value})
