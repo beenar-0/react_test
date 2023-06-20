@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "./static/css/main.e1a9598f.css",
-    "main.js": "./static/js/main.2df4fc0b.js",
+    "main.js": "./static/js/main.62a57a3e.js",
     "static/media/react.png": "./static/media/react.712b469ab58fdacc3d5c.png",
     "static/media/atomtex_logo.png": "./static/media/atomtex_logo.949bcb6d92d8e74bce47.png",
     "static/media/nodeJS.png": "./static/media/nodeJS.abf3bde593f98feab4d3.png",
@@ -17,10 +17,10 @@
     "index.html": "./index.html",
     "static/media/circle.svg": "./static/media/circle.7d277b7144ebfc4fffdc.svg",
     "main.e1a9598f.css.map": "./static/css/main.e1a9598f.css.map",
-    "main.2df4fc0b.js.map": "./static/js/main.2df4fc0b.js.map"
+    "main.62a57a3e.js.map": "./static/js/main.62a57a3e.js.map"
   },
   "entrypoints": [
     "static/css/main.e1a9598f.css",
-    "static/js/main.2df4fc0b.js"
+    "static/js/main.62a57a3e.js"
   ]
 }
