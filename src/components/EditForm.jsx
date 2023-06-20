@@ -5,7 +5,7 @@ import PostService from "../API/PostService";
 import React, {useState} from "react";
 import {useDispatch} from "react-redux";
 
-const EditForm = ({loading, editingPost, fetchPosts, setEditingPost}) => {
+const EditForm = ({loading, fetchPosts, editingPost, setEditingPost}) => {
     const dispatch = useDispatch()
     const [error, setError] = useState([])
     let validationError = []

@@ -27,7 +27,16 @@ function Posts({setAddedPosts, addedPosts, isAdmin}) {
     useEffect(() => {
         fetchPosts(currentType)
     }, [currentType])
-    const [editingPost, setEditingPost] = useState({name: "", description: "", price: "", img: "", type: ""})
+    const [editingPost, setEditingPost] = useState({
+        name: "",
+        description: "",
+        price: "",
+        img: "",
+        type: "",
+        measurementRange:"",
+        energyRange:"",
+        protectionClass:""
+    })
 
     useEffect(() => {
         if (isAdmin) setAddedPosts([])

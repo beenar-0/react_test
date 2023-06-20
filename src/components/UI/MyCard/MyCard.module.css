@@ -188,6 +188,7 @@
     }
 
     .center {
+        margin-top: 10px;
         flex-direction: row;
         width: fit-content;
     }

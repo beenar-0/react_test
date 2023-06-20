@@ -32,6 +32,7 @@ export default class PostService {
     }
 
     static async editPost(postId, post) {
+        console.log({postId, post})
         await axios.post('http://localhost:3001/edit-dosimeter', {postId, post}, {
             headers: {
                 'Content-Type':'application/json'

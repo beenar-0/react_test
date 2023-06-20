@@ -9,6 +9,7 @@ const About = () => {
             <h2 className="about-title">Technology Stack:</h2>
             <ul className="stack__list">
                 <li className="stack__item react">React</li>
+                <li className="stack__item redux">Redux</li>
                 <li className="stack__item node">Node.js</li>
                 <li className="stack__item express">Express</li>
                 <li className="stack__item mongo">MongoDB</li>

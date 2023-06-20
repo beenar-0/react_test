@@ -244,6 +244,10 @@ a {
     background-image: url("../assets/icons/mongoose.png");
 }
 
+.redux:before {
+    background-image: url("../assets/icons/redux.svg");
+}
+
 .express:before {
     background-image: url("../assets/icons/express.svg");
 }
