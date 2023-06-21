@@ -49,8 +49,7 @@ body {
 }
 
 .App._lock {
-    height: 100vh;
-    overflow-y: hidden;
+    position: fixed;
 }
 
 .app-container {
@@ -259,13 +258,21 @@ a {
 }
 
 .cart__list {
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    align-items: center;
     margin: 0;
-    padding: 30px 40px 30px;
+    padding: 10px;
 }
 
 .cart-item {
-    border-radius: 5px;
-    background: rgba(191, 210, 245, 0.5);
+    flex-basis: 80%;
+    min-width: 545px;
+    box-shadow: 0 8px 23px rgba(80, 107, 82, 0.13);
+    border-radius: 6px;
+    background: white;
     padding: 5px 15px;
     margin: 5px 0;
     display: flex;
@@ -273,20 +280,69 @@ a {
     align-items: center;
 }
 
+.cart-item__img {
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 50px;
+    height: 100px;
+}
+
 .cart-item__container {
-    margin-right: 20px;
+    gap: 10px;
+    padding: 10px;
+    align-items: center;
     width: 100%;
     display: flex;
     justify-content: space-between;
+}
+
+.cart-item__price {
+    font-weight: 600;
+    font-size: 1.3rem;
+}
+
+.cart-item__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:5px;
+    flex-grow: 1;
+}
+
+.cart-item__param,
+.cart-item__value {
+    min-width: fit-content;
+}
+
+.cart-item__param-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.cart-item__dots {
+    min-width: 5px;
+    height: 0.9rem;
+    margin: 0 3px;
+    flex-grow: 1;
+    border-bottom: 1px dotted rgb(33, 37, 41);
+}
+
+.cart-item__name {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    font-weight: 600;
 }
 
 .delete_cart-item {
     background: url("../../src/assets/icons/delete.svg") center no-repeat;
     background-size: contain;
     border: none;
-    min-width: 15px;
-    width: 15px;
-    height: 15px;
+    min-width: 30px;
+    width: 30px;
+    height: 30px;
 }
 
 .cart__wrapper {
@@ -297,6 +353,8 @@ a {
 }
 
 .cart__totalPrice {
+    font-size: 1.4rem;
+    font-weight: 600;
     padding: 0 40px;
     display: flex;
     justify-content: flex-end;
@@ -349,5 +407,24 @@ a {
 
     .leftContainer {
         flex-basis: auto;
+    }
+}
+
+@media (max-width: 675px) {
+
+    .cart-item__info {
+        width: 100%;
+    }
+
+    .cart-item__param-container {
+        font-size: 0.9rem;
+    }
+
+    .cart-item {
+        min-width: 317px;
+    }
+
+    .cart-item__container {
+        flex-direction: column;
     }
 }

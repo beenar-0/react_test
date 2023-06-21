@@ -1,16 +1,17 @@
 import React, {useState} from "react";
-import {BrowserRouter, Route, Routes, Link, Navigate} from "react-router-dom"
+import {BrowserRouter, Route, Routes, Link, Navigate, useLocation} from "react-router-dom"
 import About from "./Pages/About";
 import Posts from "./Pages/Posts";
 import MyHeader from "./components/UI/MyHeader/MyHeader";
 import Admin from "./Pages/Admin";
 import Cart from "./Pages/Cart";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
 
 function App() {
 
-    const isModalActive = useSelector(state => state.modal.isEditActive)
+    const dispatch = useDispatch()
+    const isModalActive = useSelector(state => state.modal.isModalActive)
     const isEditActive = useSelector(state => state.edit.isEditActive)
     const [isMenuActive, setIsMenuActive] = useState(false)
     const [isBurgerChecked, setBurgerChecked] = useState(false)
@@ -30,10 +31,21 @@ function App() {
 
     return (
         <BrowserRouter>
-            <div className={isMenuActive || isModalActive || isEditActive
+            <div
+                className={
+                isMenuActive || isModalActive || isEditActive
                 ? 'App _lock'
                 : 'App'
-            }>
+                }
+                onClick={(e)=>{
+                    if (isMenuActive || isModalActive || isEditActive) {
+                        e.preventDefault()
+                        setIsMenuActive(false)
+                        dispatch({type:"SET_EDIT", payload: false})
+                        dispatch({type:"SET_MODAL", payload: false})
+                    }
+                }}
+            >
                 <div
                     onClick={closeMenu}
                     className={isMenuActive

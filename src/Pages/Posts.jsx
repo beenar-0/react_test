@@ -11,6 +11,7 @@ import PostList from "../components/PostList";
 import PostForm from "../components/PostForm";
 import {useDispatch, useSelector} from "react-redux";
 import MyFilterPc from "../components/UI/MyFilterPC/MyFilterPC";
+import {useLocation} from "react-router-dom";
 
 
 function Posts({setAddedPosts, addedPosts, isAdmin}) {
@@ -56,6 +57,8 @@ function Posts({setAddedPosts, addedPosts, isAdmin}) {
             })
         })
     }
+
+
 
     return (
         <div className="app-container">

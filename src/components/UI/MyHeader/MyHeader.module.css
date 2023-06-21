@@ -82,11 +82,11 @@ input[type="checkbox"]:checked ~ span:nth-of-type(3){
 .counter {
     opacity: 0.8;
     padding: 0;
-    width: 15px;
-    height: 15px;
+    width: 20px;
+    height: 20px;
     position: absolute;
-    right: -8px;
-    top: -5px;
+    right: -10px;
+    top: -10px;
     display: flex;
     flex-direction: column;
     align-items: center;

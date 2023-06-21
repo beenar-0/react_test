@@ -1,10 +1,13 @@
 import React, {useState} from 'react';
 import classes from "./MyHeader.module.css";
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import MySearch from "../MySearch/MySearch";
 import {useDispatch, useSelector} from "react-redux";
 
 const MyHeader = ({setBurger, isBurgerChecked, addedPosts}) => {
+
+    const location = useLocation().pathname
+    const testLocation = location === '/main-page' || location === '/admin-panel'
 
     return (
         <header className={classes.header}>
@@ -29,6 +32,7 @@ const MyHeader = ({setBurger, isBurgerChecked, addedPosts}) => {
                 <div className={classes.atomtexLogo}><Link to={'/main-page'}></Link></div>
                 {
                     window.matchMedia("(min-width: 1150px)").matches
+                    && testLocation
                     && <MySearch
                         type="text"
                         placeholder="Search"

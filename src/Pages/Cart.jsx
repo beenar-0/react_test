@@ -3,13 +3,15 @@ import useFetching from "../hooks/useFetching";
 import PostService from "../API/PostService";
 import React, {useState} from "react";
 import Spinner from "react-bootstrap/Spinner";
+import classes from "../components/UI/MyCard/MyCard.module.css";
 
 const Cart = ({addedPosts, setAddedPosts}) => {
 
     const [fetching, isLoading, error] = useFetching(async () => {
         await PostService.sendOrder(order)
     })
-    const [order, setOrder] = useState({name: '', address: '', email: '', phoneNumber: '', dosimeters:addedPosts})
+    const [order, setOrder] = useState({name: '', address: '', email: '', phoneNumber: '', dosimeters: addedPosts})
+    console.log(order.dosimeters)
 
     let price = 0
     return (
@@ -27,32 +29,51 @@ const Cart = ({addedPosts, setAddedPosts}) => {
                                         price += +post.price
                                         return <li key={post._id} className="cart-item">
                                             <div className="cart-item__container">
-                                                <div className="cart-item__name">{post.name}</div>
+                                                <div className={"cart-item__img"}
+                                                     style={{backgroundImage: `url(${post.img})`}}></div>
+                                                <div className="cart-item__info">
+                                                    <div className="cart-item__name">{post.name}</div>
+                                                    <div className="cart-item__param-container">
+                                                        <div className="cart-item__param">Measurement range:</div>
+                                                        <div className="cart-item__dots"></div>
+                                                        <div className="cart-item__value">{post.measurementRange}</div>
+                                                    </div>
+                                                    <div className="cart-item__param-container">
+                                                        <div className="cart-item__param">Energy range:</div>
+                                                        <div className="cart-item__dots"></div>
+                                                        <div className="cart-item__value">{post.energyRange}</div>
+                                                    </div>
+                                                    <div className="cart-item__param-container">
+                                                        <div className="cart-item__param">Protection class:</div>
+                                                        <div className="cart-item__dots"></div>
+                                                        <div className="cart-item__value">{post.protectionClass}</div>
+                                                    </div>
+                                                </div>
                                                 <div className="cart-item__price">{post.price}$</div>
+                                                <button className="delete_cart-item" onClick={() => {
+                                                    setAddedPosts(addedPosts.filter((p) => {
+                                                        return p._id !== post._id
+                                                    }))
+                                                }}></button>
                                             </div>
-                                            <button className="delete_cart-item" onClick={() => {
-                                                setAddedPosts(addedPosts.filter((p) => {
-                                                    return p._id !== post._id
-                                                }))
-                                            }}></button>
                                         </li>
                                     })
-                                }
-                            </ul>
-                            <div className="cart__totalPrice">
-                                Total: {price}$
-                            </div>
-                            <OrderForm
-                                setAddedPosts={setAddedPosts}
-                                fetching={fetching}
-                                order={order}
-                                setOrder={setOrder}
-                            />
-                        </div>
-            }
-        </div>
+                                    }
+                                    </ul>
+                                        <div className="cart__totalPrice">
+                                            Total: {price}$
+                                        </div>
+                                        <OrderForm
+                                            setAddedPosts={setAddedPosts}
+                                            fetching={fetching}
+                                            order={order}
+                                            setOrder={setOrder}
+                                        />
+                                    </div>
+                                    }
+                                    </div>
 
-    );
-};
+                                    );
+                                };
 
-export default Cart;
+                                export default Cart;

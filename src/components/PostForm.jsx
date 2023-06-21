@@ -6,7 +6,14 @@ import PostService from "../API/PostService";
 
 const PostForm = ({loading, create, fetchPosts}) => {
 
-    const [post, setPost] = useState({name: "", description: "", price:"", img:"", type:""})
+    const [post, setPost] = useState({
+        name: "",
+        description: "",
+        price:"", img:"",
+        type:"",
+        measurementRange:"",
+        energyRange:"",
+        protectionClass:""})
     const [error, setError] = useState([])
     let validationError = []
 
