@@ -264,7 +264,7 @@ a {
     gap: 20px;
     align-items: center;
     margin: 0;
-    padding: 10px;
+    padding: 20px 10px;
 }
 
 .cart-item {
@@ -289,7 +289,7 @@ a {
 }
 
 .cart-item__container {
-    gap: 10px;
+    gap: 20px;
     padding: 10px;
     align-items: center;
     width: 100%;
@@ -303,6 +303,7 @@ a {
 }
 
 .cart-item__info {
+    padding: 5px 0 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -421,6 +422,7 @@ a {
     }
 
     .cart-item {
+        max-width: 70%;
         min-width: 317px;
     }
 
